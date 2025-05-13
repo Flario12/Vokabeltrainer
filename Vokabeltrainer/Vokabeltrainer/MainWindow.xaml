@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.15*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <DockPanel x:Name="DockPanel" Grid.Column="0" Background="LightGray" >
+            <StackPanel>
+                <Label x:Name="TitleLabel" Content="Vokabeltrainer" 
+                <Button x:Name="ExitBtn" Content="Exit" Height="40" Margin="5"/>
+                <Button x:Name="SelectBtn" Content="Select" Margin="5"/>
+                <Button x:Name="EditBtn" Content="Edit" Margin="5"/>
+                <Button x:Name="DeleteBtn" Content="Delete" Margin="5"/>
+                <Button x:Name="CreateBtn" Content="Create" Margin="5"/>
+            </StackPanel>
+        </DockPanel>
     </Grid>
 </Window>
