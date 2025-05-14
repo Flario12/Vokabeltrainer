@@ -19,8 +19,19 @@ namespace Vokabeltrainer
         public MainWindow()
         {
             InitializeComponent();
+
+
         }
 
+
+        // Hier ist der letzte Stand
+        public MainWindow(Flashcardlist flashcard)
+        {
+            InitializeComponent();
+
+            
+            Flashcard_list.Items.Add(flashcard);
+        }
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -43,7 +54,7 @@ namespace Vokabeltrainer
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-            Flashcard_list.Items.Add("Hallo");
+            
             Edit_Flashcard newflashcard = new Edit_Flashcard();
             this.Close();
             newflashcard.ShowDialog();

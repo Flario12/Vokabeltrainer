@@ -60,6 +60,11 @@ namespace Vokabeltrainer
             return $"{frontText},{backText}";
         }
 
+        public override string ToString()
+        {
+            return $"{frontText},{backText}";
+        }
+
         public static Flashcard Deserialize(string data)
         {
             string[] datasplit = data.Split(",");

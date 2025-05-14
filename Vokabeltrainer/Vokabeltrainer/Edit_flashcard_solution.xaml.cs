@@ -40,13 +40,15 @@ namespace Vokabeltrainer
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = new MainWindow();
+            string front_flashcard = input_frontcard.Text; 
+            Flashcard card = new Flashcard(_flash, input_frontcard.Text); // das _flash
+                                                                          // sollte die Eingabe von
+            Flashcardlist cards = new Flashcardlist(card);                                                              // der Vorderseite sein!
+            
 
-            string front_flashcard = input_frontcard.Text;
-            Flashcard card = new Flashcard(_flash, input_frontcard.Text); // das _flash sollte die Eingabe von der Vorderseite sein!
-
-            Flashcardlist cards = new Flashcardlist(card);
+            
             cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. ist es invalide!
+            MainWindow window = new MainWindow(cards);
             cards.Speichern("file.txt");
 
             this.Close();
