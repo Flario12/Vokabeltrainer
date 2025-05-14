@@ -14,14 +14,21 @@ using System.Windows.Shapes;
 
 namespace Vokabeltrainer
 {
-    /// <summary>
-    /// Interaction logic for Edit_flashcard_solution.xaml
-    /// </summary>
+    /// <summary>  
+    /// Interaction logic for Edit_flashcard_solution.xaml  
+    /// </summary>  
     public partial class Edit_flashcard_solution : Window
     {
+        private Flashcard _flash;
+
         public Edit_flashcard_solution()
         {
             InitializeComponent();
+        }
+
+        public Edit_flashcard_solution(Flashcard flash) : this()
+        {
+            _flash = flash;
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -34,6 +41,13 @@ namespace Vokabeltrainer
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = new MainWindow();
+
+            string front_flashcard = input_frontcard.Text;
+            Flashcard card = new Flashcard(_flash, input_frontcard.Text); // das _flash sollte die Eingabe von der Vorderseite sein!
+
+            Flashcardlist cards = new Flashcardlist(card);
+            cards.Speichern("file.txt");
+
             this.Close();
             window.ShowDialog();
         }

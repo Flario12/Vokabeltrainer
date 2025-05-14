@@ -33,7 +33,14 @@ namespace Vokabeltrainer
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            Edit_flashcard_solution backside_flashcard = new Edit_flashcard_solution();
+            // Setzung des Inhaltes von der Vorderseite der Karteikarte
+            string front_flashcard = input_frontcard.Text;
+            Flashcard card = new Flashcard(front_flashcard); // Einfügung der Vorderseite in die Klasse
+            // Aufrufung der Listenklasse und Einfügung der Karte
+            Flashcardlist flashlist = new Flashcardlist(card);
+
+            Edit_flashcard_solution backside_flashcard = new Edit_flashcard_solution(card); // Switch zur Rückseite
+
             this.Close();
             backside_flashcard.ShowDialog();
         }
