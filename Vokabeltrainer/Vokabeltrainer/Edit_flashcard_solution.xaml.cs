@@ -46,6 +46,7 @@ namespace Vokabeltrainer
             Flashcard card = new Flashcard(_flash, input_frontcard.Text); // das _flash sollte die Eingabe von der Vorderseite sein!
 
             Flashcardlist cards = new Flashcardlist(card);
+            cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. ist es invalide!
             cards.Speichern("file.txt");
 
             this.Close();

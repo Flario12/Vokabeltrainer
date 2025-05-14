@@ -13,8 +13,12 @@ namespace Vokabeltrainer
         private DateTime lastReviewed {  get; set; }
         private int timesReviewed { get; set; }
 
+        public Flashcard()
+        {
+
+        }
         
-        public Flashcard(string fronttext)
+        public Flashcard(string fronttext) : this()
         {
             this.frontText = fronttext;
         }

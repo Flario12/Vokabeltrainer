@@ -6,7 +6,7 @@ namespace Vokabeltrainer
     {
         private string name { get; set; }
         private List<Flashcard> flashcards { get; set; }
-        private Flashcard flashcard;
+        private Flashcard flashcard = new Flashcard();
 
         // Konstruktor, der eine einzelne Flashcard übergeben bekommt
         public Flashcardlist(Flashcard flashcard)
