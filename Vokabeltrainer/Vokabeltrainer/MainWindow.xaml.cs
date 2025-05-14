@@ -25,5 +25,28 @@ namespace Vokabeltrainer
         {
             this.Close();
         }
+
+        private void SelectBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditBtn_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CreateBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Flashcard_list.Items.Add("Hallo");
+            Edit_Flashcard newflashcard = new Edit_Flashcard();
+            this.Close();
+            newflashcard.ShowDialog();
+        }
     }
 }
