@@ -20,7 +20,6 @@ namespace Vokabeltrainer
     public partial class Edit_flashcard_solution : Window
     {
         private Flashcard _flash;
-
         public Edit_flashcard_solution()
         {
             InitializeComponent();
@@ -28,7 +27,9 @@ namespace Vokabeltrainer
 
         public Edit_flashcard_solution(Flashcard flash) : this()
         {
-            _flash = flash;
+            InitializeComponent();
+            string flash_f = flash.ToString();
+            Flashcard _flash = new Flashcard(flash_f);
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -40,13 +41,11 @@ namespace Vokabeltrainer
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            string front_flashcard = input_frontcard.Text; 
-            Flashcard card = new Flashcard(_flash, input_frontcard.Text); // das _flash
+            string front_flashcard = input_backcard.Text; 
+            Flashcard card = new Flashcard(_flash, front_flashcard); // das _flash
                                                                           // sollte die Eingabe von
             Flashcardlist cards = new Flashcardlist(card);                                                              // der Vorderseite sein!
-            
 
-            
             cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. ist es invalide!
             MainWindow window = new MainWindow(cards);
             cards.Speichern("file.txt");

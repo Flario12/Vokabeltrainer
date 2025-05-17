@@ -6,7 +6,6 @@ namespace Vokabeltrainer
     {
         private string name { get; set; }
         private List<Flashcard> flashcards { get; set; }
-        private Flashcard flashcard = new Flashcard();
 
         // Konstruktor, der eine einzelne Flashcard übergeben bekommt
         public Flashcardlist(Flashcard flashcard)
@@ -49,8 +48,24 @@ namespace Vokabeltrainer
         {
             using (StreamWriter sw = new StreamWriter(data))
             {
-                sw.WriteLine(flashcard.Serialize());
+                foreach (Flashcard card in flashcards)
+                {
+                    sw.WriteLine(card.Serialize());
+                }
             }
+        }
+
+
+        public override string ToString()
+        {
+            // Das durchläuft, um die einzelnen Werte
+            // der Liste darzustellen, eine Schleife.
+            string result = $"";
+            foreach (Flashcard card in flashcards)
+            {
+                result += card.ToString();
+            }
+            return result;
         }
     }
 }

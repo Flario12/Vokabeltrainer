@@ -57,12 +57,12 @@ namespace Vokabeltrainer
 
         public string Serialize()
         {
-            return $"{frontText},{backText}";
+            return $"{frontText};{backText}";
         }
 
         public override string ToString()
         {
-            return $"{frontText},{backText}";
+            return $"{frontText};{backText}";
         }
 
         public static Flashcard Deserialize(string data)

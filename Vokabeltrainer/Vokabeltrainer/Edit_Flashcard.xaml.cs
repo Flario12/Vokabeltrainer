@@ -37,7 +37,7 @@ namespace Vokabeltrainer
             string front_flashcard = input_frontcard.Text;
             Flashcard card = new Flashcard(front_flashcard); // Einfügung der Vorderseite in die Klasse
             // Aufrufung der Listenklasse und Einfügung der Karte
-            Flashcardlist flashlist = new Flashcardlist(card);
+             // Flashcardlist flashlist = new Flashcardlist(card);
 
             Edit_flashcard_solution backside_flashcard = new Edit_flashcard_solution(card); // Switch zur Rückseite
 
