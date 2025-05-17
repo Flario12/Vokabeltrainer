@@ -67,8 +67,8 @@ namespace Vokabeltrainer
 
         public static Flashcard Deserialize(string data)
         {
-            string[] datasplit = data.Split(",");
-            if (datasplit.Length == 0)
+            string[] datasplit = data.Split(";");
+            if (datasplit.Length < 2)
             {
                 throw new Exception("Dieser Inhalt ist invalide");
             } 

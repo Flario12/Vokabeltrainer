@@ -22,18 +22,21 @@ namespace Vokabeltrainer
         private Flashcard _flash;
         public Edit_flashcard_solution()
         {
+            // Default Prozess
             InitializeComponent();
         }
 
         public Edit_flashcard_solution(Flashcard flash) : this()
         {
+            // Prozess falls die Vorderseite fertig bearbeitet wurde.
             InitializeComponent();
-            string flash_f = flash.ToString();
+            string flash_f = flash.ToString(); // flash_f ... für flashcard front (Vorderseite)
             Flashcard _flash = new Flashcard(flash_f);
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
+            // Erklärt sich von selber, aber beendet die Bearbeitung.
             MainWindow window = new MainWindow();
             this.Close();
             window.ShowDialog();
@@ -41,6 +44,7 @@ namespace Vokabeltrainer
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+            // Beendet die Bearbeitung durch einen Input.
             string front_flashcard = input_backcard.Text; 
             Flashcard card = new Flashcard(_flash, front_flashcard); // das _flash
                                                                           // sollte die Eingabe von
