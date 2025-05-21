@@ -5,29 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vokabeltrainer"
         mc:Ignorable="d"
-        Title="CreateDeck" Height="450" Width="800">
+        Title="CreateDeck" Height="450" Width="800" Background="LightCyan">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.30*"/>
+            <ColumnDefinition Width="0.60*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <DockPanel x:Name="DockPanel" Grid.Column="0" Grid.RowSpan="2" Background="LightGray" >
+        <DockPanel x:Name="DockPanel" Grid.Column="0" Grid.RowSpan="3" Background="LightGray" >
             <StackPanel>
-                <Label x:Name="TitleLabel" Content="Vokabeltrainer" Width="140" Background="Gray" FontSize="20" Margin="5"/>
+                <Label x:Name="TitleLabel" Content="Vokabeltrainer" Width="140"
+                       Background="Gray" FontSize="20" Margin="5" />
                 <!--<Button x:Name="SelectBtn" Content="Select" Margin="5"/>-->
-                <Button x:Name="EditBtn" Content="Edit" Margin="10" Height="30" FontSize="15" Click="EditBtn_Click"/>
-                <Button x:Name="SaveBtn" Content="Save" Margin="10" FontSize="15"/>
+                <Button x:Name="SaveBtn" Content="Save" Height="40" Margin="10" FontSize="15" Click="SaveBtn_Click"/>
                 <Button x:Name="ExitBtn" Content="Exit" Height="40" Margin="10" FontSize="15" Click="ExitBtn_Click"/>
             </StackPanel>
         </DockPanel>
-        <WrapPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
-            <TextBox x:Name="DeckName" Width="100" Background="Orange" />
-        </WrapPanel>
+
+        <Label x:Name="DeckNameLabel" Content="Deckname: " Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0"
+       Height="30" FontSize="15" Width="100" HorizontalContentAlignment="Center"
+       HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+
+        <TextBox x:Name="DeckName" Width="400" Background="Azure" 
+                 FontSize="20" Margin="10" Grid.Row="1" Grid.Column="1"
+                 Grid.ColumnSpan="2" 
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                 TextWrapping="Wrap"/>
+
+        <Label x:Name="FileNameLabel" Content="Filename: " Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="2"
+               Height="30" FontSize="15" Width="100" HorizontalContentAlignment="Center"
+               HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="DeckFileName" Width="400" Background="Azure" Height="70"
+             FontSize="20" Margin="10" Grid.Row="2" Grid.Column="1"
+             Grid.ColumnSpan="2" 
+             HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+             TextWrapping="Wrap" TextChanged="DeckFileName_TextChanged"/>
     </Grid>
 </Window>

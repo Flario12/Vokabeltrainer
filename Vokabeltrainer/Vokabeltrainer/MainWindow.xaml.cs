@@ -83,7 +83,9 @@ namespace Vokabeltrainer
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-
+            CreateDeck deck = new CreateDeck();
+            this.Close();
+            deck.ShowDialog();
         }
     }
 }

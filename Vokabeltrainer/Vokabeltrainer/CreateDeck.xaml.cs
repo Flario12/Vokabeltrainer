@@ -19,9 +19,28 @@ namespace Vokabeltrainer
     /// </summary>
     public partial class CreateDeck : Window
     {
+        private string filename;
         public CreateDeck()
         {
             InitializeComponent();
+        }
+
+        private void SaveBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string filename = DeckFileName.Text.ToString();
+
+        }
+
+        private void DeckFileName_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string filename = DeckFileName.Text.ToString();
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            this.Close();
+            window.ShowDialog();
         }
     }
 }
