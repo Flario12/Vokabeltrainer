@@ -26,7 +26,7 @@ namespace Vokabeltrainer
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = new MainWindow();
+            Vokabel_list_window window = new Vokabel_list_window();
             this.Close();
             window.ShowDialog();
         }
@@ -40,6 +40,11 @@ namespace Vokabeltrainer
              // Flashcardlist flashlist = new Flashcardlist(card);
 
             Edit_flashcard_solution backside_flashcard = new Edit_flashcard_solution(card); // Switch zur Rückseite
+            Flashcardlist cards = new Flashcardlist(card);           // der Vorderseite sein!
+
+            // cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. es ist invalide! // gelöst, aber doppelter Eintrag
+            cards.Speichern("file.txt"); // Problem (21.05.2025) : ;;Inhalt anstatt   Inhalt;Inhalt;
+
 
             this.Close();
             backside_flashcard.ShowDialog();

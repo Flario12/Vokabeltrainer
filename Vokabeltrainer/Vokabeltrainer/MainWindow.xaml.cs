@@ -19,15 +19,24 @@ namespace Vokabeltrainer
         private Flashcardlist flashcards;
         public MainWindow()
         {
+            
+            // Der Inhalt der .txt Datei wird herausgelesen
+            // und in die ListView eingefügt
             InitializeComponent();
 
+            /*List<Flashcard> flashcard_ff = Flashcardlist.Laden("file.txt");
 
+            string flash_s = flashcard_ff.ToString();
+            foreach ( Flashcard card in flashcard_ff)
+            {
+                Flashcard_list.Items.Add(card); 
+            }*/
         }
 
         // Hier ist der letzte Stand
         public MainWindow(Flashcardlist flashcard)
         {
-            InitializeComponent();
+            /*InitializeComponent();
 
             // Hier wird List<Flashcard>, da dies der datenbasierte Rückgabeparameter ist.
             List<Flashcard> flashcard_f = Flashcardlist.Laden("file.txt"); // Dadurch dass
@@ -38,8 +47,8 @@ namespace Vokabeltrainer
             string flash_string = flashcard_f.ToString();
             foreach ( Flashcard card in flashcard_f)
             {
-                Flashcard_list.Items.Add(flashcard_f);
-            }
+                Flashcard_list.Items.Add(card);
+            }*/
         }
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
@@ -55,21 +64,26 @@ namespace Vokabeltrainer
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             // Bearbeitet eine Karteikarte
-            
+            Vokabel_list_window vok = new Vokabel_list_window();
+            this.Close();
+            vok.ShowDialog();
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Löscht eine Karteikarte
+            // Löscht alle karteikarten im Moment (noch ändern 21.05.2025)
+            List<Flashcard> flashcard_ff = Flashcardlist.Laden("file.txt");
 
+            string flash_s = flashcard_ff.ToString();
+            foreach (Flashcard card in flashcard_ff)
+            {
+                Flashcard_list.Items.Remove(card);
+            }
         }
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Erstellt eine neue Karteikarte
-            Edit_Flashcard newflashcard = new Edit_Flashcard();
-            this.Close();
-            newflashcard.ShowDialog();
+
         }
     }
 }

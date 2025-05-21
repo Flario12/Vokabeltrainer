@@ -31,17 +31,17 @@ namespace Vokabeltrainer
 
         public static List<Flashcard> Laden(string data)
         {
-            List<Flashcard> list = new List<Flashcard>(); // Eine wird benötigt, da man ja
+            List<Flashcard> list = new List<Flashcard>(); // Eine wird benötigt, da man ja.
                                                           // eine Liste von Werten laden möchte.
             using (StreamReader sr = new StreamReader(data))
             {
                 while (!sr.EndOfStream)
                 {
-                    string line = sr.ReadLine();
-                    if (!string.IsNullOrEmpty(line))
+                    string line = sr.ReadLine(); // liest jede Zeile durch.
+                    if (!string.IsNullOrEmpty(line)) // prüft ob es nicht leer oder nicht null ist.
                     {
                         Flashcard card = Flashcard.Deserialize(line); 
-                        if (card != null) // Das überprüft ob die Karte existiert
+                        if (card != null) // Das überprüft ob die Karte existiert.
                         {
                             list.Add(card);
                         }
@@ -62,6 +62,16 @@ namespace Vokabeltrainer
             }
         }
 
+        public void Hinzufügen(string data)
+        {
+            using (StreamWriter sw = new StreamWriter(data, true))
+            {
+                foreach (Flashcard card in flashcards) // Durchläuft alle Werte aus der Liste
+                {
+                    sw.WriteLine(card.Serialize());
+                }
+            }
+        }
 
         public override string ToString()
         {

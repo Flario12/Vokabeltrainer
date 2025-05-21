@@ -19,7 +19,8 @@ namespace Vokabeltrainer
     /// </summary>  
     public partial class Edit_flashcard_solution : Window
     {
-        private Flashcard _flash;
+        Flashcard _flash = new Flashcard(); // Initialisieren einer Flashcard, welche
+                                            // übertragen wird. (21.05.2025)
         public Edit_flashcard_solution()
         {
             // Default Prozess
@@ -37,7 +38,7 @@ namespace Vokabeltrainer
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             // Erklärt sich von selber, aber beendet die Bearbeitung.
-            MainWindow window = new MainWindow();
+            Vokabel_list_window window = new Vokabel_list_window();
             this.Close();
             window.ShowDialog();
         }
@@ -45,14 +46,15 @@ namespace Vokabeltrainer
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             // Beendet die Bearbeitung durch einen Input.
-            string front_flashcard = input_backcard.Text; 
-            Flashcard card = new Flashcard(_flash, front_flashcard); // das _flash
-                                                                          // sollte die Eingabe von
-            Flashcardlist cards = new Flashcardlist(card);                                                              // der Vorderseite sein!
+            
+            string back_flashcard = input_backcard.Text; 
+            Flashcard card = new Flashcard(_flash.Showfront(), back_flashcard); // das _flash
+                                                                     // sollte die Eingabe von
+            Flashcardlist cards = new Flashcardlist(card);           // der Vorderseite sein!
 
-            cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. ist es invalide!
-            MainWindow window = new MainWindow(cards);
-            cards.Speichern("file.txt");
+             // cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. es ist invalide! // gelöst
+            cards.Hinzufügen("file.txt"); // Problem (21.05.2025) : ;;Inhalt anstatt   Inhalt;Inhalt;
+            Vokabel_list_window window = new Vokabel_list_window();
 
             this.Close();
             window.ShowDialog();
