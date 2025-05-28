@@ -23,7 +23,7 @@ namespace Vokabeltrainer
             this.frontText = fronttext;
         }
 
-        public Flashcard(string fronttext, string backtext) // hier wird ein existierendes Flashcard objekt verwendet.
+        public Flashcard(string fronttext, string backtext) : this() // hier wird ein existierendes Flashcard objekt verwendet.
         {
             this.backText = backtext;
             this.frontText = fronttext;

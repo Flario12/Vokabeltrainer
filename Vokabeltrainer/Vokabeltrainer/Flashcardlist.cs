@@ -64,6 +64,7 @@ namespace Vokabeltrainer
 
         public void Hinzufügen(string data)
         {
+            // Appenden eines Inhaltes in eine File
             using (StreamWriter sw = new StreamWriter(data, true))
             {
                 foreach (Flashcard card in flashcards) // Durchläuft alle Werte aus der Liste

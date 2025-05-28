@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -9,25 +10,46 @@ namespace Vokabeltrainer
 {
     public class Deck
     {
-        // Hier wird die Liste initialisiert, welches im Konstruktor somit verwendet wird.
-        private List<Flashcardlist> deck = new List<Flashcardlist>();
+         // Initialisierung eines decks durch eine Schnittstelle
+         // (+ Indezes können ausgelesen und bearbeitet werden,
+         // keine Konvertierung nötig)
 
-        private Deck(List<Flashcardlist> deck)
+        // Hier wird die Liste initialisiert, welches im Konstruktor somit verwendet wird.
+        private List<Flashcardlist> decks { get; set; }
+        public string Deckname { get; } 
+        public string Filename { get; }
+        public Deck()
         {
-            // Hier wird eine Liste von einer Flashcardliste gespeichert
-            deck = new List<Flashcardlist> ();
+            decks = new List<Flashcardlist>();
         }
 
-        public void Speichern(string path)
+        public Deck(string deckname, string filename) : this()
+        {
+            Deckname = deckname;
+            Filename = filename;
+        }
+
+        private Deck(Flashcardlist deck) : this() 
+        {
+            // Hier wird eine Liste von einer Flashcardliste gespeichert
+            decks = new List<Flashcardlist> { deck };
+        }
+
+        
+
+        
+        public void Speichern(string filename)
         {
             // Hier sollte das Deck gespeichert werden.
-            using (StreamWriter sw = new StreamWriter(path))
+            using (StreamWriter sw = new StreamWriter(filename))
             {
-                
-                for (int i = 0; i < deck.Count; i++) // Durchläuft alle Werte aus der Liste
+                List<Flashcard> flashcards = Flashcardlist.Laden("file.txt");
+
+                sw.WriteLine(Filename);
+                sw.WriteLine(Deckname);
+
+                foreach (Flashcard card in flashcards)
                 {
-                    Flashcard card = new Flashcard();
-                    
                     sw.WriteLine(card.Serialize());
                 }
             }

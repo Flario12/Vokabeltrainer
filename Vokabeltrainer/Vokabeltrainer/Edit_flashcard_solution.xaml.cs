@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Serilog;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,6 +26,7 @@ namespace Vokabeltrainer
         {
             // Default Prozess
             InitializeComponent();
+            Log.Information("EditFlashcardWindow started ...");
         }
 
         public Edit_flashcard_solution(Flashcard flash) : this()
@@ -33,6 +35,8 @@ namespace Vokabeltrainer
             InitializeComponent();
             string flash_f = flash.ToString(); // flash_f ... für flashcard front (Vorderseite)
             Flashcard _flash = new Flashcard(flash_f);
+
+            Log.Information($"Flashcard was transmitted {_flash} ...");
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -56,8 +60,12 @@ namespace Vokabeltrainer
             cards.Hinzufügen("file.txt"); // Problem (21.05.2025) : ;;Inhalt anstatt   Inhalt;Inhalt;
             Vokabel_list_window window = new Vokabel_list_window();
 
+
+            Log.Information($"Flashcard was created {cards} ...");
+
             this.Close();
             window.ShowDialog();
+
         }
     }
 }

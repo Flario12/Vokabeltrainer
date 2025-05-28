@@ -1,4 +1,6 @@
-﻿using System.Text;
+﻿using System.Diagnostics.Eventing.Reader;
+using System.Text;
+using Serilog;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -23,6 +25,28 @@ namespace Vokabeltrainer
             // Der Inhalt der .txt Datei wird herausgelesen
             // und in die ListView eingefügt
             InitializeComponent();
+
+            // Logger konfigurieren
+            // MinimumLevel gibt an ab welchem Log-Level
+            // die Log Messages auch wirklcih im Output landen
+            // MinimumLevel Warning:
+            // NUR Warnign, Fatal, Error werden gelogt
+            // Reihenfolge der LogLevels
+            //  0 ... Verbose
+            //  1 ... Debug
+            //  2 ... Information
+            //  3 ... Warning
+            //  5 ... Error
+            //  6 ... Fatal
+
+            Log.Logger = new LoggerConfiguration(). // Fluid API:  Punkt punkt punkt Konf.
+                MinimumLevel.Verbose().
+                WriteTo.Console().
+                WriteTo.File("Vokabeltrainer.log", rollingInterval: RollingInterval.Minute). // es geht auch Month
+                CreateLogger();
+
+            Log.Logger.Information("MainWindow started ...");
+
 
             /*List<Flashcard> flashcard_ff = Flashcardlist.Laden("file.txt");
 
@@ -53,6 +77,7 @@ namespace Vokabeltrainer
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+            Log.Information("Application closed ...");
         }
 
         private void SelectBtn_Click(object sender, RoutedEventArgs e)
@@ -67,6 +92,8 @@ namespace Vokabeltrainer
             Vokabel_list_window vok = new Vokabel_list_window();
             this.Close();
             vok.ShowDialog();
+
+            Log.Information("EditWindow started ...");
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
@@ -86,6 +113,8 @@ namespace Vokabeltrainer
             CreateDeck deck = new CreateDeck();
             this.Close();
             deck.ShowDialog();
+
+            Log.Information("CreateWindow started ...");
         }
     }
 }
