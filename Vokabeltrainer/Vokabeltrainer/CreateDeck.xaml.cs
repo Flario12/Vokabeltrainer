@@ -48,7 +48,7 @@ namespace Vokabeltrainer
             }
             else
             {
-                Log.Error($"deck is Null! {deck}");
+                Log.Error($"deck is Null!: {deck}");
             }
         }
 

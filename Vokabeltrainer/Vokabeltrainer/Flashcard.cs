@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -33,18 +34,17 @@ namespace Vokabeltrainer
         {
             return frontText;
         }
+
         public string Showback()
         {
             return backText;
         }
-        public void Amountknown ()
-        {
 
-        }
         public void Review()
         {
 
         }
+
         public void ResetProgress()
         {
 
@@ -65,6 +65,7 @@ namespace Vokabeltrainer
             string[] datasplit = data.Split(";");
             if (datasplit.Length < 2)
             {
+                Log.Error("invalide split length ...");
                 throw new Exception("Dieser Inhalt ist invalide");
             } 
             else

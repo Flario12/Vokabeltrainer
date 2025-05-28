@@ -26,6 +26,7 @@ namespace Vokabeltrainer
         {
             // Default Prozess
             InitializeComponent();
+
             Log.Information("EditFlashcardWindow started ...");
         }
 
@@ -43,6 +44,7 @@ namespace Vokabeltrainer
         {
             // Erklärt sich von selber, aber beendet die Bearbeitung.
             Vokabel_list_window window = new Vokabel_list_window();
+
             this.Close();
             window.ShowDialog();
         }

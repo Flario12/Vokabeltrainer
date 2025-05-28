@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
 namespace Vokabeltrainer
 {
@@ -20,7 +21,7 @@ namespace Vokabeltrainer
         public string Filename { get; }
         public Deck()
         {
-            decks = new List<Flashcardlist>();
+            decks = new List<Flashcardlist>(); // hier wird die Flashcardlist ins deck eingefügt
         }
 
         public Deck(string deckname, string filename) : this()
@@ -29,15 +30,6 @@ namespace Vokabeltrainer
             Filename = filename;
         }
 
-        private Deck(Flashcardlist deck) : this() 
-        {
-            // Hier wird eine Liste von einer Flashcardliste gespeichert
-            decks = new List<Flashcardlist> { deck };
-        }
-
-        
-
-        
         public void Speichern(string filename)
         {
             // Hier sollte das Deck gespeichert werden.
@@ -53,6 +45,28 @@ namespace Vokabeltrainer
                     sw.WriteLine(card.Serialize());
                 }
             }
+        }
+
+        public static List<Flashcard> Laden(string filename)
+        {
+            List<Flashcard> list = new List<Flashcard>(); // Eine wird benötigt, da man ja.
+                                                          // eine Liste von Werten laden möchte.
+            using (StreamReader sr = new StreamReader(filename))
+            {
+                while (!sr.EndOfStream)
+                {
+                    string line = sr.ReadLine(); // liest jede Zeile durch.
+                    if (!string.IsNullOrEmpty(line)) // prüft ob es nicht leer oder nicht null ist.
+                    {
+                        Flashcard card = Flashcard.Deserialize(line);
+                        if (card != null) // Das überprüft ob die Karte existiert.
+                        {
+                            list.Add(card);
+                        }
+                    }
+                }
+            }
+            return list;
         }
     }
 }
