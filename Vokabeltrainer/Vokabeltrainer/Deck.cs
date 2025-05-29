@@ -47,26 +47,38 @@ namespace Vokabeltrainer
             }
         }
 
-        public static List<Flashcard> Laden(string filename)
+        public static List<Flashcardlist> LadenAlleDecks(string filename)
         {
-            List<Flashcard> list = new List<Flashcard>(); // Eine wird benötigt, da man ja.
-                                                          // eine Liste von Werten laden möchte.
-            using (StreamReader sr = new StreamReader(filename))
-            {
-                while (!sr.EndOfStream)
+            // Hier wird der Inhalt eines Decks geladen
+            List<Flashcardlist> decks = new List<Flashcardlist>(); // hier wird ein deck mit dem Inhalt einer
+                                                                   // Flashcardliste initiliasiert,
+                                                                   // weil es sich hierbei um eine
+                                                                   // Liste von Flashcardlisten handelt
+            Flashcardlist? currentDeck = null; // hier wird geprüft ob das aktuelle Deck null ist
+            foreach (string line in File.ReadLines(filename))
+            { // hier geht man mit einer foreach-loop jeden Inhalt einer File durch (man liest ihn heraus)
+                if (line.Trim() == "---") // Das dient als Trenner zwischen verschieden Listen
+                    // Frage1|Antwort1 ... Frage1;Antwort1
                 {
-                    string line = sr.ReadLine(); // liest jede Zeile durch.
-                    if (!string.IsNullOrEmpty(line)) // prüft ob es nicht leer oder nicht null ist.
-                    {
-                        Flashcard card = Flashcard.Deserialize(line);
-                        if (card != null) // Das überprüft ob die Karte existiert.
-                        {
-                            list.Add(card);
-                        }
-                    }
+                    if (currentDeck != null) 
+                        decks.Add(currentDeck); // falls es existiert
+                    currentDeck = null;
+                }
+                else if (!string.IsNullOrWhiteSpace(line))
+                {
+                    string[] parts = line.Split('|');
+                    Flashcard card = parts.Length == 2
+                        ? new Flashcard(parts[0], parts[1])
+                        : new Flashcard(parts[0]);
+                    if (currentDeck == null)
+                        currentDeck = new Flashcardlist(card);
+                    else
+                        currentDeck.Addcard(card);
                 }
             }
-            return list;
+            if (currentDeck != null)
+                decks.Add(currentDeck);
+            return decks;
         }
     }
 }

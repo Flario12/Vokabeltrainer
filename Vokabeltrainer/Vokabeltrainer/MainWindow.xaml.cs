@@ -49,11 +49,11 @@ namespace Vokabeltrainer
             Log.Logger.Information("MainWindow started ...");
 
 
-            List<Flashcard> deck = Deck.Laden("beispiel.txt");
+            List<Flashcardlist> decks = Deck.LadenAlleDecks("beispiel.txt");
 
-            foreach (Flashcard card in deck)
+            foreach (Flashcardlist deck in decks)
             {
-                Flashcard_list.Items.Add(card); // Anzeige im UI-Element
+                Flashcard_list.Items.Add(deck); // Anzeige im UI-Element
             }
         }
 

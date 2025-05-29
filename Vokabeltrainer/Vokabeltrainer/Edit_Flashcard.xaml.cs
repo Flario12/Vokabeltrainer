@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Serilog;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,21 +34,47 @@ namespace Vokabeltrainer
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Setzung des Inhaltes von der Vorderseite der Karteikarte
-            string front_flashcard = input_frontcard.Text;
-            Flashcard card = new Flashcard(front_flashcard); // Einfügung der Vorderseite in die Klasse
-            // Aufrufung der Listenklasse und Einfügung der Karte
-             // Flashcardlist flashlist = new Flashcardlist(card);
+            try
+            {
+                // Setzung des Inhaltes von der Vorderseite der Karteikarte
+                string front_flashcard = input_frontcard.Text;
+                if (!string.IsNullOrEmpty(front_flashcard))
+                {
+                    foreach (char c in front_flashcard)
+                    {
+                        if (char.IsDigit(c))
+                        {
+                            throw new Exception("Numbers are not permitted!");
+                            Log.Error($"Front Input was a Number ... {c} ");
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
 
-            Edit_flashcard_solution backside_flashcard = new Edit_flashcard_solution(card); // Switch zur Rückseite
-            Flashcardlist cards = new Flashcardlist(card);           // der Vorderseite sein!
+                    Flashcard card = new Flashcard(front_flashcard); // Einfügung der Vorderseite in die Klasse
+                                                                     // Aufrufung der Listenklasse und Einfügung der Karte
+                                                                     // Flashcardlist flashlist = new Flashcardlist(card);
 
-            // cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. es ist invalide! // gelöst, aber doppelter Eintrag
-            cards.Speichern("file.txt"); // Problem (21.05.2025) : ;;Inhalt anstatt   Inhalt;Inhalt;
+                    Edit_flashcard_solution backside_flashcard = new Edit_flashcard_solution(card); // Switch zur Rückseite
+                    Flashcardlist cards = new Flashcardlist(card);           // der Vorderseite sein!
 
+                    // cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. es ist invalide! // gelöst, aber doppelter Eintrag
+                    cards.Speichern("file.txt"); // Problem (21.05.2025) : ;;Inhalt anstatt   Inhalt;Inhalt;
 
-            this.Close();
-            backside_flashcard.ShowDialog();
+                    Log.Information($"frontside was submitted ... {front_flashcard}");
+
+                    this.Close();
+                    backside_flashcard.ShowDialog();
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("please submit an valid input!");
+                Log.Error($"Input was invalid ... {input_frontcard} ");
+            }
         }
     }
 }
