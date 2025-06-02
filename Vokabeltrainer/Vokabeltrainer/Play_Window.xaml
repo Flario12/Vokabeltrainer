@@ -1,0 +1,33 @@
+﻿<Window x:Class="Vokabeltrainer.Play_Window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vokabeltrainer"
+        mc:Ignorable="d"
+        Title="Play_Window" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DockPanel Background="AliceBlue" Grid.Row="0" Grid.RowSpan="0" Grid.Column="0" Grid.ColumnSpan="4">
+            <Label Content="Play" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="32"/>
+        </DockPanel>
+        <Label x:Name="FrontCard_Label" Content="Frontcard" Grid.Row="1" Grid.Column="1" FontSize="25"
+               Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="FrontCard_Text" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label x:Name="BackCard_Label" Content="Backcard" Grid.Row="3" Grid.Column="1" FontSize="25"
+        Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="BackCard_Text" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>
