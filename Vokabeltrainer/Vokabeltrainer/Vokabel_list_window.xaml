@@ -21,6 +21,7 @@
             <StackPanel>
                 <Label x:Name="TitleLabel" Content="Vokabeltrainer" Width="140" Background="Gray" FontSize="20" Margin="5"/>
                 <!--<Button x:Name="SelectBtn" Content="Select" Margin="5"/>-->
+                <Button x:Name="PlayBtn" Content="Play" Margin="10" Height="30" FontSize="15" Click="PlayBtn_Click"/>
                 <Button x:Name="EditBtn" Content="Edit" Margin="10" Height="30" FontSize="15" Click="EditBtn_Click"/>
                 <Button x:Name="DeleteBtn" Content="Delete" Margin="10" FontSize="15"/>
                 <Button x:Name="AddBtn" Content="Add" Margin="10" FontSize="15" Click="AddBtn_Click"/>

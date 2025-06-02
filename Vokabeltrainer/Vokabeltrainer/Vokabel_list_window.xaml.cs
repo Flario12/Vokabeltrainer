@@ -55,5 +55,12 @@ namespace Vokabeltrainer
             this.Close();
             main.ShowDialog();
         }
+
+        private void PlayBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Play_Window play = new Play_Window();
+            this.Close();
+            play.ShowDialog();
+        }
     }
 }
