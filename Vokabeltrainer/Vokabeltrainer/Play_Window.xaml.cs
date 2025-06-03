@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Serilog;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,9 +20,18 @@ namespace Vokabeltrainer
     /// </summary>
     public partial class Play_Window : Window
     {
-        public Play_Window()
+        private static string filename;
+        public Play_Window(string filename)
         {
             InitializeComponent();
+            Log.Information("Play was started ...");
+
+            List<Flashcardlist> decks = Deck.LadenAlleDecks(filename);
+
+            foreach (Flashcardlist deck in decks)
+            {
+                FrontCard_Label.Content = deck.ToString(); // Anzeige im UI-Element
+            }
         }
     }
 }

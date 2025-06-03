@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Serilog;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -54,10 +55,22 @@ namespace Vokabeltrainer
                                                                    // Flashcardliste initiliasiert,
                                                                    // weil es sich hierbei um eine
                                                                    // Liste von Flashcardlisten handelt
+
+            string[] deckFilenames = Directory.GetFiles("./decks", "*.txt");
+
+            Log.Information("Loading decks from ./decks folder ...");
+            foreach (string deckFilename in deckFilenames)
+            {
+                // TODO: Laden des Decks aus dem File
+                Log.Information(deckFilename);
+
+                Flashcardlist.Laden(deckFilename);
+            }
+
             Flashcardlist? currentDeck = null; // hier wird geprüft ob das aktuelle Deck null ist
             foreach (string line in File.ReadLines(filename))
             { // hier geht man mit einer foreach-loop jeden Inhalt einer File durch (man liest ihn heraus)
-                if (line.Trim() == "---") // Das dient als Trenner zwischen verschieden Listen
+                if (line.Trim() == "---") // Das dient als Trenner zwischen verschiedenen Listen
                     // Frage1|Antwort1 ... Frage1;Antwort1
                 {
                     if (currentDeck != null) 
@@ -65,7 +78,8 @@ namespace Vokabeltrainer
                     currentDeck = null;
                 }
                 else if (!string.IsNullOrWhiteSpace(line))
-                {
+                { // Hier wird nochmals für das Deck speziell deserialisiert,
+                  // da man dadurch leichter auf die Karten zugreifen kann
                     string[] parts = line.Split('|');
                     Flashcard card = parts.Length == 2
                         ? new Flashcard(parts[0], parts[1])

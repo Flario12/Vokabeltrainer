@@ -63,8 +63,8 @@ namespace Vokabeltrainer
                     {
                         if (char.IsDigit(c))
                         {
-                            throw new Exception("Numbers are not permitted!");
                             Log.Error($"Back Input was a Number ... {c} ");
+                            throw new Exception("Numbers are not permitted!");
                         }
                     }
 
@@ -84,9 +84,9 @@ namespace Vokabeltrainer
                 }
                 else
                 {
-                    throw new Exception();
 
                     Log.Error($"Back input was invalid ... {back_flashcard}");
+                    throw new Exception();
                 }
                               
             }

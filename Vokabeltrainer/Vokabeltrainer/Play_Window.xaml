@@ -23,11 +23,11 @@
         <DockPanel Background="AliceBlue" Grid.Row="0" Grid.RowSpan="1" Grid.Column="0" Grid.ColumnSpan="4">
             <Label Content="Play" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="32" Margin="10"/>
         </DockPanel>
-        <Label x:Name="FrontCard_Label" Content="Frontcard" Grid.Row="1" Grid.Column="1" FontSize="25"
+        <Label x:Name="FrontCard_Label" Content="Answer" Grid.Row="1" Grid.Column="1" FontSize="25"
                Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10"/>
-        <TextBox x:Name="FrontCard_Text" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10"/>
-        <Label x:Name="BackCard_Label" Content="Backcard" Grid.Row="3" Grid.Column="1" FontSize="25"
+        <TextBox x:Name="FrontCard_Text" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" FontSize="20"/>
+        <Label x:Name="BackCard_Label" Content="Solution" Grid.Row="3" Grid.Column="1" FontSize="25"
         Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="10"/>
-        <TextBox x:Name="BackCard_Text" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="10"/>
+        <TextBox x:Name="BackCard_Text" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" FontSize="20"/>
     </Grid>
 </Window>

@@ -19,6 +19,9 @@ namespace Vokabeltrainer
     /// </summary>
     public partial class Vokabel_list_window : Window
     {
+        public Flashcardlist Flashcards { get; set; } = null;
+
+        private static string filename;
         public Vokabel_list_window()
         {
             // Der Inhalt der .txt Datei wird herausgelesen
@@ -27,8 +30,25 @@ namespace Vokabeltrainer
 
             List<Flashcard> flashcard_f = Flashcardlist.Laden("file.txt");
 
-            string flash_s = flashcard_f.ToString();
-            foreach (Flashcard card in flashcard_f)
+            //string flash_s = flashcard_f.ToString();
+            //foreach (Flashcard card in flashcard_f)
+            //{
+            //    Flashcard_list.Items.Add(card);
+            //}
+        }
+
+        public Vokabel_list_window(Flashcardlist flashcards)
+        {
+            InitializeComponent();
+
+            Flashcards = flashcards;
+
+            UpdateListView();
+        }
+
+        private void UpdateListView()
+        {
+            foreach (Flashcard card in Flashcards.Flashcards)
             {
                 Flashcard_list.Items.Add(card);
             }
@@ -58,7 +78,7 @@ namespace Vokabeltrainer
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
-            Play_Window play = new Play_Window();
+            Play_Window play = new Play_Window(filename);
             this.Close();
             play.ShowDialog();
         }

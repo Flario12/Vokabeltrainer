@@ -10,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Vokabeltrainer
 {
@@ -72,17 +73,27 @@ namespace Vokabeltrainer
         private void SelectBtn_Click(object sender, RoutedEventArgs e)
         {
             // Wählt eine Karteikarte aus
-
+            Log.Debug("FLashcard was selected ...");
         }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Bearbeitet eine Karteikarte
-            Vokabel_list_window vok = new Vokabel_list_window();
-            this.Close();
-            vok.ShowDialog();
+            // Holen der ausgewählten Flahscards
+            Flashcardlist selectedList = Flashcard_list.SelectedItem as Flashcardlist;
 
-            Log.Information("EditWindow started ...");
+            if (selectedList != null)
+            {
+                // Bearbeitet eine Karteikarte
+                Vokabel_list_window vok = new Vokabel_list_window(selectedList);
+                this.Close();
+                vok.ShowDialog();
+
+                Log.Information("EditWindow started ...");
+            }
+            else
+            {
+                MessageBox.Show("Bitte eine Liste auswählen");
+            }
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)

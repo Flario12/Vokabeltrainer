@@ -5,31 +5,31 @@ namespace Vokabeltrainer
     public class Flashcardlist
     {
         private string name { get; set; }
-        private List<Flashcard> flashcards { get; set; }
+        public List<Flashcard> Flashcards { get; set; }
 
         // Konstruktor, der eine einzelne Flashcard übergeben bekommt
         public Flashcardlist(Flashcard flashcard)
         {
-            flashcards = new List<Flashcard> { flashcard }; // flashcard wird zur Liste hergegeben.
+            Flashcards = new List<Flashcard> { flashcard }; // flashcard wird zur Liste hergegeben.
         }
 
         public List<Flashcard> Addcard(Flashcard flashcard)
         {
-            flashcards.Add(flashcard);
-            return flashcards; // noch ändern, willkürliche Eingabe
+            Flashcards.Add(flashcard);
+            return Flashcards; // noch ändern, willkürliche Eingabe
         }
 
         public void Removecard(Flashcard flashcard)
         {
-            flashcards.Remove(flashcard);
+            Flashcards.Remove(flashcard);
         }
 
         public int Count()
         {
-            return flashcards.Count;
+            return Flashcards.Count;
         }
 
-        public static List<Flashcard> Laden(string data)
+        public static List<Flashcard> Laden(string data) // TODO: name als dateiname nehmen
         {
             List<Flashcard> list = new List<Flashcard>(); // Eine wird benötigt, da man ja.
                                                           // eine Liste von Werten laden möchte.
@@ -55,7 +55,7 @@ namespace Vokabeltrainer
         {
             using (StreamWriter sw = new StreamWriter(data))
             {
-                foreach (Flashcard card in flashcards) // Durchläuft alle Werte aus der Liste
+                foreach (Flashcard card in Flashcards) // Durchläuft alle Werte aus der Liste
                 {
                     sw.WriteLine(card.Serialize());
                 }
@@ -67,7 +67,7 @@ namespace Vokabeltrainer
             // Appenden eines Inhaltes in eine File
             using (StreamWriter sw = new StreamWriter(data, true))
             {
-                foreach (Flashcard card in flashcards) // Durchläuft alle Werte aus der Liste
+                foreach (Flashcard card in Flashcards) // Durchläuft alle Werte aus der Liste
                 {
                     sw.WriteLine(card.Serialize());
                 }
@@ -79,7 +79,7 @@ namespace Vokabeltrainer
             // Das durchläuft, um die einzelnen Werte
             // der Liste darzustellen, eine Schleife.
             string result = $"";
-            foreach (Flashcard card in flashcards)
+            foreach (Flashcard card in Flashcards)
             {
                 result += card.ToString();
             }
