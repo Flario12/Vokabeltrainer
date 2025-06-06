@@ -7,7 +7,39 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="CreateDeck.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Edit_Flashcard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Edit_flashcard_solution.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Play_Window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Vokabel_list_window.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="CreateDeck.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Edit_Flashcard.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Edit_flashcard_solution.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Play_Window.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Vokabel_list_window.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

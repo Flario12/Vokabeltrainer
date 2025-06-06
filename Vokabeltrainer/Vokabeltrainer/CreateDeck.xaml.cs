@@ -31,15 +31,13 @@ namespace Vokabeltrainer
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            string filename = DeckFileName.Text.ToString();
-            string deckname = DeckName.Text.ToString();
+            
 
-
-            Deck deck = new Deck(deckname, filename);
+            DeckManager deck = new DeckManager();
 
             if (deck != null)
             {
-                deck.Speichern("beispiel.txt");
+                deck.Speichern();
                 
 
                 MainWindow window = new MainWindow();

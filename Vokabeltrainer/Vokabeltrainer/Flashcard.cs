@@ -9,9 +9,9 @@ namespace Vokabeltrainer
 {
     public class Flashcard
     {
-        private string? frontText { get; set; }
-        private string? backText { get; set; }
-        private DateTime lastReviewed {  get; set; }
+        public string? FrontText { get; set; }
+        public string? BackText { get; set; }
+        private DateTime lastReviewed { get; set; }
         private int timesReviewed { get; set; }
 
         public Flashcard()
@@ -21,23 +21,23 @@ namespace Vokabeltrainer
         
         public Flashcard(string fronttext) : this()
         {
-            this.frontText = fronttext;
+            this.FrontText = fronttext;
         }
 
         public Flashcard(string fronttext, string backtext) : this() // hier wird ein existierendes Flashcard objekt verwendet.
         {
-            this.backText = backtext;
-            this.frontText = fronttext;
+            this.BackText = backtext;
+            this.FrontText = fronttext;
         }
 
         public string Showfront()
         {
-            return frontText;
+            return FrontText;
         }
 
         public string Showback()
         {
-            return backText;
+            return BackText;
         }
 
         public void Review()
@@ -52,12 +52,12 @@ namespace Vokabeltrainer
 
         public string Serialize()
         {
-            return $"{frontText};{backText}";
+            return $"{FrontText};{BackText}";
         }
 
         public override string ToString()
         {
-            return $"{frontText};{backText}";
+            return $"{FrontText} - {BackText}";
         }
 
         public static Flashcard Deserialize(string data)

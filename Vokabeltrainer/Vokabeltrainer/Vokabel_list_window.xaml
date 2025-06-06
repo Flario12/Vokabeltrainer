@@ -23,7 +23,7 @@
                 <!--<Button x:Name="SelectBtn" Content="Select" Margin="5"/>-->
                 <Button x:Name="PlayBtn" Content="Play" Margin="10" Height="30" FontSize="15" Click="PlayBtn_Click"/>
                 <Button x:Name="EditBtn" Content="Edit" Margin="10" Height="30" FontSize="15" Click="EditBtn_Click"/>
-                <Button x:Name="DeleteBtn" Content="Delete" Margin="10" FontSize="15"/>
+                <Button x:Name="DeleteBtn" Content="Delete" Margin="10" FontSize="15" Click="DeleteBtn_Click"/>
                 <Button x:Name="AddBtn" Content="Add" Margin="10" FontSize="15" Click="AddBtn_Click"/>
                 <Button x:Name="ExitBtn" Content="Exit" Height="40" Margin="10" FontSize="15" Click="ExitBtn_Click"/>
             </StackPanel>

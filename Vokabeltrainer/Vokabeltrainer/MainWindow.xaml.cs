@@ -19,7 +19,7 @@ namespace Vokabeltrainer
     /// </summary>
     public partial class MainWindow : Window
     {
-        private Flashcardlist flashcards;
+        private DeckManager deckManager { get; set; } = new DeckManager();
         public MainWindow()
         {
             
@@ -50,18 +50,18 @@ namespace Vokabeltrainer
             Log.Logger.Information("MainWindow started ...");
 
 
-            List<Flashcardlist> decks = Deck.LadenAlleDecks("beispiel.txt");
+            deckManager.Laden();
 
-            foreach (Flashcardlist deck in decks)
+            foreach (Deck deck in deckManager.Decks)
             {
-                Flashcard_list.Items.Add(deck); // Anzeige im UI-Element
+                ListViewDecks.Items.Add(deck); // Anzeige im UI-Element
             }
         }
 
-        public MainWindow(Flashcardlist flashcards)
+        public MainWindow(DeckManager deckManager)
         {
             InitializeComponent();
-            this.flashcards = flashcards;
+            this.deckManager = deckManager;
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -79,12 +79,12 @@ namespace Vokabeltrainer
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             // Holen der ausgewählten Flahscards
-            Flashcardlist selectedList = Flashcard_list.SelectedItem as Flashcardlist;
+            Deck selectedDeck = ListViewDecks.SelectedItem as Deck;
 
-            if (selectedList != null)
+            if (selectedDeck != null)
             {
                 // Bearbeitet eine Karteikarte
-                Vokabel_list_window vok = new Vokabel_list_window(selectedList);
+                Vokabel_list_window vok = new Vokabel_list_window(selectedDeck);
                 this.Close();
                 vok.ShowDialog();
 
@@ -98,12 +98,18 @@ namespace Vokabeltrainer
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)
         {
-            // Löscht alle karteikarten im Moment (noch ändern 21.05.2025)
-            List<Flashcard> flashcard_ff = Flashcardlist.Laden("file.txt");
+            Deck selectedDeck = ListViewDecks.SelectedItem as Deck;
 
-            foreach (Flashcard card in flashcard_ff)
+            if (selectedDeck != null)
             {
-                Flashcard_list.Items.Remove(card);
+                // Bearbeitet eine Karteikarte
+                ListViewDecks.Items.Remove(selectedDeck);
+
+                Log.Information($"The {selectedDeck.Name} Deck was removed ...");
+            }
+            else
+            {
+                MessageBox.Show("Bitte eine Liste auswählen");
             }
         }
 

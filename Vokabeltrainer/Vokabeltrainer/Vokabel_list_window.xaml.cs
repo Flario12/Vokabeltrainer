@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Serilog;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Vokabeltrainer
 {
@@ -19,36 +9,27 @@ namespace Vokabeltrainer
     /// </summary>
     public partial class Vokabel_list_window : Window
     {
-        public Flashcardlist Flashcards { get; set; } = null;
-
-        private static string filename;
+        public Deck Deck { get; set; } = null;
         public Vokabel_list_window()
         {
-            // Der Inhalt der .txt Datei wird herausgelesen
-            // und in die ListView eingefügt
             InitializeComponent();
-
-            List<Flashcard> flashcard_f = Flashcardlist.Laden("file.txt");
-
-            //string flash_s = flashcard_f.ToString();
-            //foreach (Flashcard card in flashcard_f)
-            //{
-            //    Flashcard_list.Items.Add(card);
-            //}
         }
 
-        public Vokabel_list_window(Flashcardlist flashcards)
+        public Vokabel_list_window(Deck deck)
         {
+            // Der Inhalt der .txt File wird in die ListView eingefügt
             InitializeComponent();
 
-            Flashcards = flashcards;
+            Deck = deck;
 
             UpdateListView();
         }
 
         private void UpdateListView()
         {
-            foreach (Flashcard card in Flashcards.Flashcards)
+            Flashcard_list.Items.Clear();
+
+            foreach (Flashcard card in Deck.Flashcards)
             {
                 Flashcard_list.Items.Add(card);
             }
@@ -65,12 +46,17 @@ namespace Vokabeltrainer
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
             Edit_Flashcard edit = new Edit_Flashcard();
-            this.Close();
-            edit.ShowDialog();
+            if (edit.ShowDialog() == true)
+            {
+                Deck.Addcard(edit.Flashcard);
+                UpdateListView();
+            }
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: Deck gleich strukturieren
+            Deck.Speichern("./decks");
             MainWindow main = new MainWindow();
             this.Close();
             main.ShowDialog();
@@ -78,9 +64,27 @@ namespace Vokabeltrainer
 
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
-            Play_Window play = new Play_Window(filename);
+            // TODO: richtiges Deck wählen
+            Play_Window play = new Play_Window(new Deck());
             this.Close();
             play.ShowDialog();
+        }
+
+        private void DeleteBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Flashcard selectedCard = Flashcard_list.SelectedItem as Flashcard;
+
+            if (selectedCard != null)
+            {
+                // Bearbeitet eine Karteikarte
+                Flashcard_list.Items.Remove(selectedCard);
+
+                Log.Information($"The {selectedCard} card was removed ...");
+            }
+            else
+            {
+                MessageBox.Show("please choose a card");
+            }
         }
     }
 }

@@ -1,0 +1,12 @@
+- Arbeitstitel
+- Projektidee
+________________________
+- Must-Haves
+- Nice-Haves
+- Grobe Arbeitsteilung (jeder programmiert)
+Fertig: 30.04.2025
+________________________ 
+- GUI Skizzen
+- Klassenstruktur (UML)
+________________________
+Abgabe: 07.05.2025

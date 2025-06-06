@@ -20,8 +20,9 @@ namespace Vokabeltrainer
     /// </summary>  
     public partial class Edit_flashcard_solution : Window
     {
-        Flashcard _flash = new Flashcard(); // Initialisieren einer Flashcard, welche
-                                            // übertragen wird. (21.05.2025)
+        private Flashcard flash = new Flashcard(); // Initialisieren einer Flashcard, welche
+                                                   // übertragen wird. (21.05.2025)
+        private string deckFolder = "./decks";
         public Edit_flashcard_solution()
         {
             // Default Prozess
@@ -36,6 +37,7 @@ namespace Vokabeltrainer
             InitializeComponent();
             string flash_f = flash.ToString(); // flash_f ... für flashcard front (Vorderseite)
             Flashcard _flash = new Flashcard(flash_f);
+            flash.FrontText = _flash.ToString();
 
             Log.Information($"Flashcard was transmitted {_flash} ...");
         }
@@ -68,13 +70,11 @@ namespace Vokabeltrainer
                         }
                     }
 
-                    Flashcard card = new Flashcard(_flash.Showfront(), back_flashcard); // das _flash
+                    Flashcard card = new Flashcard(flash.FrontText, back_flashcard); // das _flash
                                                                                         // sollte die Eingabe von
-                    Flashcardlist cards = new Flashcardlist(card);           // der Vorderseite sein!
-
-                    // cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. es ist invalide! // gelöst
-                    cards.Hinzufügen("file.txt"); // Problem (21.05.2025) : ;;Inhalt anstatt   Inhalt;Inhalt;
-                    Vokabel_list_window window = new Vokabel_list_window();
+                    Deck cards = new Deck(card);           // der Vorderseite sein!
+                    cards.Hinzufügen(deckFolder); 
+                    Vokabel_list_window window = new Vokabel_list_window(cards);
 
 
                     Log.Information($"Flashcard was created {cards} ...");
@@ -84,17 +84,14 @@ namespace Vokabeltrainer
                 }
                 else
                 {
-
                     Log.Error($"Back input was invalid ... {back_flashcard}");
                     throw new Exception();
-                }
-                              
+                }           
             }
             catch
             {
-                MessageBox.Show("please submit an valid input!");
+                MessageBox.Show("please submit an valid input (string) !");
             }
-
         }
     }
 }

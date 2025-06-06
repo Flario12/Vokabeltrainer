@@ -28,7 +28,7 @@
             </StackPanel>
         </DockPanel>
         <WrapPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
-            <ListView x:Name="Flashcard_list" Background="AliceBlue"/>
+            <ListView x:Name="ListViewDecks" Background="AliceBlue"/>
         </WrapPanel>
     </Grid>
 </Window>

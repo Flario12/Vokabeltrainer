@@ -20,54 +20,59 @@ namespace Vokabeltrainer
     /// </summary>
     public partial class Edit_Flashcard : Window
     {
+        // TODO: Bug fixen bei der Eingabe
+        //private string deckFolder = "./decks";
+
+        public Flashcard Flashcard { get; set; } = new Flashcard();
+
         public Edit_Flashcard()
         {
             InitializeComponent();
         }
 
+        public Edit_Flashcard(Flashcard flashcard)
+        {
+            InitializeComponent();
+
+            Flashcard = flashcard;
+
+            // TODO: textboxen befüllen
+        }
+
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
-            Vokabel_list_window window = new Vokabel_list_window();
             this.Close();
-            window.ShowDialog();
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)
         {
+            // TODO: Bug-fixen per Nachfrage beim DIL
+            string front_flashcard = input_frontcard.Text;
+            string back_flashcard = input_backcard.Text;
+            MessageBox.Show($"{front_flashcard}");
             try
             {
                 // Setzung des Inhaltes von der Vorderseite der Karteikarte
-                string front_flashcard = input_frontcard.Text;
-                if (!string.IsNullOrEmpty(front_flashcard))
+                if (IsNumber(front_flashcard) || IsNumber(back_flashcard))
                 {
-                    foreach (char c in front_flashcard)
-                    {
-                        if (char.IsDigit(c))
-                        {
-                            throw new Exception("Numbers are not permitted!");
-                            Log.Error($"Front Input was a Number ... {c} ");
-                        }
-                        else
-                        {
-                            continue;
-                        }
-                    }
+                    Log.Error($"Front Input was a Number ...  ");
+                    throw new Exception("Numbers are not permitted!");
+                }
+                
+                if (!string.IsNullOrEmpty(front_flashcard) && !string.IsNullOrEmpty(back_flashcard))
+                {
 
-                    Flashcard card = new Flashcard(front_flashcard); // Einfügung der Vorderseite in die Klasse
-                                                                     // Aufrufung der Listenklasse und Einfügung der Karte
-                                                                     // Flashcardlist flashlist = new Flashcardlist(card);
-
-                    Edit_flashcard_solution backside_flashcard = new Edit_flashcard_solution(card); // Switch zur Rückseite
-                    Flashcardlist cards = new Flashcardlist(card);           // der Vorderseite sein!
-
-                    // cards.Addcard(card); // Problem: Hier wird nichts eingefügt bzw. es ist invalide! // gelöst, aber doppelter Eintrag
-                    cards.Speichern("file.txt"); // Problem (21.05.2025) : ;;Inhalt anstatt   Inhalt;Inhalt;
-
+                    Flashcard.FrontText = front_flashcard;
+                    Flashcard.BackText = back_flashcard;
+                    
                     Log.Information($"frontside was submitted ... {front_flashcard}");
 
+                    DialogResult = true;
                     this.Close();
-                    backside_flashcard.ShowDialog();
-
+                }
+                else
+                {
+                    MessageBox.Show("Texte müssen befüllt sein");
                 }
             }
             catch
@@ -75,6 +80,18 @@ namespace Vokabeltrainer
                 MessageBox.Show("please submit an valid input!");
                 Log.Error($"Input was invalid ... {input_frontcard} ");
             }
+        }
+
+        private bool IsNumber(string text)
+        {
+            foreach (char c in text)
+            {
+                if (char.IsDigit(c))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

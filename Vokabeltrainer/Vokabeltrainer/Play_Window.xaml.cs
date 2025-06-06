@@ -20,18 +20,22 @@ namespace Vokabeltrainer
     /// </summary>
     public partial class Play_Window : Window
     {
-        private static string filename;
-        public Play_Window(string filename)
+        public Play_Window(Deck deck)
         {
             InitializeComponent();
             Log.Information("Play was started ...");
 
-            List<Flashcardlist> decks = Deck.LadenAlleDecks(filename);
-
-            foreach (Flashcardlist deck in decks)
+            foreach (Flashcard card in deck.Flashcards)
             {
-                FrontCard_Label.Content = deck.ToString(); // Anzeige im UI-Element
+                
             }
+        }
+
+        private void ExitBtn_Click(object sender, RoutedEventArgs e)
+        {
+            Vokabel_list_window vok = new Vokabel_list_window();
+            this.Close();
+            vok.ShowDialog();
         }
     }
 }

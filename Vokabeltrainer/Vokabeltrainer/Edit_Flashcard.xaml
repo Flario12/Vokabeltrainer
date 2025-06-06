@@ -15,14 +15,22 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="input_frontcard" Background="LightGray" Grid.Row="1" Grid.Column="0" 
-                 Grid.ColumnSpan="4" Height="100" Width="300" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
-        <Label Content="Vorderseite:" Background="LightGray" Width="200" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+        <Label Content="Vorderseite:" Width="200" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        
+        <TextBox x:Name="input_frontcard" Background="LightGray" Grid.Row="0" Grid.Column="2" 
+                 Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
+
+        <Label Content="Rückseite:" Width="200" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+
+        <TextBox x:Name="input_backcard" Background="LightGray" Grid.Row="1" Grid.Column="2" 
+          Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
+
+
         <Button x:Name="AddBtn" Content="Add" Background="LightGray" Grid.Row="2" Grid.ColumnSpan="2" Grid.Column="0" Click="AddBtn_Click"/>
         <Button x:Name="ExitBtn" Content="Exit" Background="LightGray" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2" Click="ExitBtn_Click"/>
     </Grid>
