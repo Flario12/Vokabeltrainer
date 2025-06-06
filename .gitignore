@@ -52,3 +52,4 @@ CodeCoverage/
 *.VisualState.xml
 TestResult.xml
 nunit-*.xml
+/Vokabeltrainer/.vs/Vokabeltrainer/CopilotIndices/17.12.38.29086
