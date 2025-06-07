@@ -38,7 +38,7 @@ namespace Vokabeltrainer
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {
             // es werden die Vokabellisten geöffnet
-            Vokabel_list_window vok = new Vokabel_list_window();
+            Vokabel_list_window vok = new Vokabel_list_window(Deck);
             this.Close();
             vok.ShowDialog();
         }
@@ -65,7 +65,7 @@ namespace Vokabeltrainer
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
             // TODO: richtiges Deck wählen
-            Play_Window play = new Play_Window(new Deck());
+            Play_Window play = new Play_Window(Deck); // sonst new Deck()
             this.Close();
             play.ShowDialog();
         }
