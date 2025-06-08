@@ -33,6 +33,7 @@ namespace Vokabeltrainer
                 // Aufrufung der Inhalte 
                 string[] solutions = deck.Flashcards
 
+                // Das sollte den FrontText herausnehmen
                 .Where(card => !string.IsNullOrEmpty(card.FrontText))
                 .Select(card => card.FrontText)
                 .ToArray();

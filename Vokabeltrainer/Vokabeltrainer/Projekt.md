@@ -37,7 +37,7 @@
     |**14.05**|Gui Zeichnung umsetzen/anwenden|90%| edit fehlt|
     |**16.05**|Speichern und laden umsetzen/verbessern|60%||
     |**17.05**|Speichern und laden umsetzen/verbessern|90%| doppelter Eintrag von der Hinterseite|
-    |||||
+    |****||||
 
 !!! Example Lastenheft
     |Must-Haves|
