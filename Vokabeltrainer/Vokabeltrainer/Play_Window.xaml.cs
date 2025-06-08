@@ -21,31 +21,31 @@ namespace Vokabeltrainer
     public partial class Play_Window : Window
     {
         public string Answer = null;
-        public string[] Solutions = null;
         private string Solution = null;
+
+        public Deck Deck = null;
+        private int cardIndex = 0;
         public Play_Window(Deck deck)
         {
             InitializeComponent();
             Log.Information("Play was started ...");
 
-            foreach (Flashcard card in deck.Flashcards)
-            {
-                // Aufrufung der Inhalte 
-                string[] solutions = deck.Flashcards
+            Deck = deck;
+            ShowCardText();
 
-                // Das sollte den FrontText herausnehmen
-                .Where(card => !string.IsNullOrEmpty(card.FrontText))
-                .Select(card => card.FrontText)
-                .ToArray();
-                Solutions = solutions;
+            //foreach (Flashcard card in deck.Flashcards)
+            //{
 
-                string answer = FrontCard_Text.Text;
-                Answer = answer;
+            //    string answer = FrontCard_Text.Text;
+            //    Answer = answer;
+            //}
+        }
 
-                Flashcard[] solution = deck.Flashcards.ToArray();
-                Solution = solution.ToString();
-                
-            }
+        private void ShowCardText()
+        {
+            Flashcard card = Deck.Flashcards[cardIndex];
+            // TODO: Kartentext anzeigen
+            FrontCard_Text.Text = card.FrontText;
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -55,22 +55,39 @@ namespace Vokabeltrainer
             vok.ShowDialog();
         }
 
-        private void SubmitBtn_Click(object sender, RoutedEventArgs e)
+
+        private void SubmitBtn_Click_1(object sender, RoutedEventArgs e)
         {
-            string[] solutions = Solutions;
-            string answer = Answer;
-            for (int i = 0; i < solutions.Length; i++)
+            Flashcard card = Deck.Flashcards[cardIndex];
+
+            // TODO Eingabe holden
+            string answer = BackCard_Text.Text;
+
+            // Prüfen ob richtig
+            if (answer == card.BackText)
             {
-                if (answer == solutions[i] && !string.IsNullOrEmpty(answer))
-                {
-                    MessageBox.Show("Richtig");
-                    i++;
-                }
-                else
-                {
-                    // MessageBox.Show("Falsch");
-                }
+                // richtig
+                MessageBox.Show("Richtig");
             }
+            else
+            {
+                MessageBox.Show("Falsch");
+            }
+
+            // TODO Index erhöhen und prüfen ob es die letzte Karte war
+            if (cardIndex >= Deck.Flashcards.Count - 1)
+            {
+                Vokabel_list_window vok = new Vokabel_list_window(Deck);
+                this.Close();
+                vok.ShowDialog();
+            }
+            else
+            {
+                cardIndex++;
+                ShowCardText();
+            }
+
+            // TODO Falls nicht letzte Karte, neuen Text anzeigen
         }
     }
 }

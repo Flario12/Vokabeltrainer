@@ -31,8 +31,6 @@ namespace Vokabeltrainer
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            
-
             DeckManager deck = new DeckManager();
 
             if (deck != null)
@@ -50,11 +48,6 @@ namespace Vokabeltrainer
             }
         }
 
-        private void DeckFileName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string filename = DeckFileName.Text.ToString();
-            Log.Debug($"DeckFilename changed: {filename} ...");
-        }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
