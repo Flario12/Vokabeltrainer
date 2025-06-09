@@ -28,6 +28,13 @@ namespace Vokabeltrainer
             // und in die ListView eingefügt
             InitializeComponent();
 
+            MessageBox.Show(
+                "Hallo, Willkommen zu meinem Vokabeltrainer-Projekt",
+                "Willkommen",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
+
             // Logger konfigurieren
             // MinimumLevel gibt an ab welchem Log-Level
             // die Log Messages auch wirklcih im Output landen
@@ -101,28 +108,41 @@ namespace Vokabeltrainer
         {
             Deck selectedDeck = ListViewDecks.SelectedItem as Deck;
 
-            if (selectedDeck != null)
-            {
-                // Bearbeitet eine Karteikarte
-                ListViewDecks.Items.Remove(selectedDeck);
-                string dateipfad = $"./decks/{selectedDeck.Name}.txt";
+            MessageBoxResult result = MessageBox.Show(
+                "Möchten Sie das Deck wirklich löschen?",
+                "Deck löschen",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning,
+                MessageBoxResult.No
+            );
 
-                if (File.Exists(dateipfad))
+            if (result == MessageBoxResult.Yes)
+            {
+                // Löschen durchführen
+                if (selectedDeck != null)
                 {
-                    File.Delete(dateipfad);
-                    Console.WriteLine("Datei wurde gelöscht.");
+                    // Bearbeitet eine Karteikarte
+                    ListViewDecks.Items.Remove(selectedDeck);
+                    string dateipfad = $"./decks/{selectedDeck.Name}.txt"; // Hier wird der Pfad gesucht.
+
+                    // Hier wird geprüft ob die File existiert und diese wird dann somit gelöscht.
+                    if (File.Exists(dateipfad))
+                    {
+                        File.Delete(dateipfad);
+                        Console.WriteLine("Datei wurde gelöscht.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Datei existiert nicht.");
+                    }
+
+                    Log.Information($"The {selectedDeck.Name} Deck was removed ...");
                 }
                 else
                 {
-                    Console.WriteLine("Datei existiert nicht.");
+                    MessageBox.Show("Bitte eine Liste auswählen");
                 }
-
-                Log.Information($"The {selectedDeck.Name} Deck was removed ...");
-            }
-            else
-            {
-                MessageBox.Show("Bitte eine Liste auswählen");
-            }
+            }            
         }
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)

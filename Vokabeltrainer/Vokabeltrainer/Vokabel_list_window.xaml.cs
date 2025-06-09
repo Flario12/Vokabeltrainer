@@ -74,16 +74,28 @@ namespace Vokabeltrainer
         {
             Flashcard selectedCard = Flashcard_list.SelectedItem as Flashcard;
 
-            if (selectedCard != null)
-            {
-                // Bearbeitet eine Karteikarte
-                Flashcard_list.Items.Remove(selectedCard);
+            MessageBoxResult result = MessageBox.Show(
+                "Möchten Sie diese Karte wirklich löschen?",
+                "Karte löschen",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Warning,
+                MessageBoxResult.No
+            );
 
-                Log.Information($"The {selectedCard} card was removed ...");
-            }
-            else
+            if (result == MessageBoxResult.Yes)
             {
-                MessageBox.Show("please choose a card");
+                // Löschen durchführen
+                if (selectedCard != null)
+                {
+                    // Bearbeitet eine Karteikarte
+                    Flashcard_list.Items.Remove(selectedCard);
+
+                    Log.Information($"The {selectedCard} card was removed ...");
+                }
+                else
+                {
+                    MessageBox.Show("please choose a card");
+                }
             }
         }
     }

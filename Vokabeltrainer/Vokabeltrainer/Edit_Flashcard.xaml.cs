@@ -49,7 +49,6 @@ namespace Vokabeltrainer
             // TODO: Bug-fixen per Nachfrage beim DIL
             string front_flashcard = input_frontcard.Text;
             string back_flashcard = input_backcard.Text;
-            MessageBox.Show($"{front_flashcard}");
             try
             {
                 // Setzung des Inhaltes von der Vorderseite der Karteikarte
