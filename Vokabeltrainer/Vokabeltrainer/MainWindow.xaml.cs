@@ -115,12 +115,21 @@ namespace Vokabeltrainer
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
-            CreateDeck deck = new CreateDeck();
+            CreateDeck createDeckWindow = new CreateDeck();
 
-            Log.Information("CreateWindow started ...");
+            if (createDeckWindow.ShowDialog() == true)
+            {
+                Deck newDeck = createDeckWindow.CreatedDeck;
 
-            this.Close();
-            deck.ShowDialog();
+                if (newDeck != null)
+                {
+                    deckManager.Decks.Add(newDeck); // Deck zur Liste hinzufügen
+                    ListViewDecks.Items.Add(newDeck); // UI aktualisieren
+                    deckManager.Speichern(); // Speichern
+
+                    Log.Information($"Neues Deck erstellt und gespeichert: {newDeck.Name}");
+                }
+            }
         }
     }
 }

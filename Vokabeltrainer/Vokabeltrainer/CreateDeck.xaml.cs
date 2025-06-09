@@ -22,6 +22,10 @@ namespace Vokabeltrainer
     {
         private string filename;
 
+        public Deck CreatedDeck { get; private set; }
+
+        // public Deck Deck { get; set; } = null;
+
         public CreateDeck()
         {
             InitializeComponent();
@@ -31,20 +35,18 @@ namespace Vokabeltrainer
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            DeckManager deck = new DeckManager();
+            string deckName = DeckName.Text;
 
-            if (deck != null)
+            if (!string.IsNullOrWhiteSpace(deckName))
             {
-                deck.Speichern();
-                
-
-                MainWindow window = new MainWindow();
+                CreatedDeck = new Deck();
+                CreatedDeck.Name = deckName;
+                this.DialogResult = true;
                 this.Close();
-                window.ShowDialog();
             }
             else
             {
-                Log.Error($"deck is Null!: {deck}");
+                MessageBox.Show("Bitte gib einen gültigen Namen ein.");
             }
         }
 

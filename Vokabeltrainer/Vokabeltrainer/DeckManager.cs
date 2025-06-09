@@ -20,6 +20,7 @@ namespace Vokabeltrainer
 
         // Hier wird die Liste initialisiert, welches im Konstruktor somit verwendet wird.
         public List<Deck> Decks { get; set; }
+        public string DeckName { get; set; }
         
         public Deck CurrentDeck { get; set; }
         
@@ -28,9 +29,15 @@ namespace Vokabeltrainer
             Decks = new List<Deck>(); // hier wird die Flashcardlist ins deck eingefügt
         }
 
-        public DeckManager(string deckFolder) : this()
+        public DeckManager(string deckName) : this()
         {
-            this.deckFolder = deckFolder;
+            this.DeckName = deckName;
+        }
+
+        public List<Deck> AddDeck(Deck flashcards)
+        {
+            Decks.Add(flashcards);
+            return Decks; // noch ändern, willkürliche Eingabe
         }
 
         public void Speichern()
