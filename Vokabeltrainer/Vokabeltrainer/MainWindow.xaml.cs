@@ -20,6 +20,7 @@ namespace Vokabeltrainer
     public partial class MainWindow : Window
     {
         private DeckManager deckManager { get; set; } = new DeckManager();
+        private string DeckName { get; set; }
         public MainWindow()
         {
             
@@ -104,6 +105,17 @@ namespace Vokabeltrainer
             {
                 // Bearbeitet eine Karteikarte
                 ListViewDecks.Items.Remove(selectedDeck);
+                string dateipfad = $"./decks/{selectedDeck.Name}.txt";
+
+                if (File.Exists(dateipfad))
+                {
+                    File.Delete(dateipfad);
+                    Console.WriteLine("Datei wurde gelöscht.");
+                }
+                else
+                {
+                    Console.WriteLine("Datei existiert nicht.");
+                }
 
                 Log.Information($"The {selectedDeck.Name} Deck was removed ...");
             }
@@ -116,13 +128,16 @@ namespace Vokabeltrainer
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
         {
             CreateDeck createDeckWindow = new CreateDeck();
-
+            
+            // Hier wird ShowDialog verwendet um die Properties vom CreateDeck zu bekommen
+            // Dies erkennt man am .CreatedDeck
             if (createDeckWindow.ShowDialog() == true)
             {
                 Deck newDeck = createDeckWindow.CreatedDeck;
 
                 if (newDeck != null)
                 {
+                    DeckName = newDeck.Name;
                     deckManager.Decks.Add(newDeck); // Deck zur Liste hinzufügen
                     ListViewDecks.Items.Add(newDeck); // UI aktualisieren
                     deckManager.Speichern(); // Speichern

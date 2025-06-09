@@ -22,26 +22,28 @@ namespace Vokabeltrainer
     {
         private string filename;
 
-        public Deck CreatedDeck { get; private set; }
+        public Deck CreatedDeck { get; private set; } // Dies dient dazu um ein Deck zu erstellen und zu speichern.
 
         // public Deck Deck { get; set; } = null;
 
         public CreateDeck()
         {
             InitializeComponent();
-            
+            Log.Information("CreateWindow was opened ...");
 
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             string deckName = DeckName.Text;
+            Log.Information($"Name was transmitted: {deckName} ...");
 
             if (!string.IsNullOrWhiteSpace(deckName))
             {
-                CreatedDeck = new Deck();
+                CreatedDeck = new Deck(); // neues Deck wird initialisiert
                 CreatedDeck.Name = deckName;
-                this.DialogResult = true;
+                this.DialogResult = true; // Das Mainwindow sollte immer noch aktiv sein
+                Log.Information("Create Window was closed ...");
                 this.Close();
             }
             else
