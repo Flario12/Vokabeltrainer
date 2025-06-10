@@ -56,7 +56,7 @@ namespace Vokabeltrainer
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             // TODO: Deck gleich strukturieren
-            Deck.Speichern("./decks");
+            Deck.Speichern($"./decks");
             MainWindow main = new MainWindow();
             this.Close();
             main.ShowDialog();
@@ -88,7 +88,12 @@ namespace Vokabeltrainer
                 if (selectedCard != null)
                 {
                     // Bearbeitet eine Karteikarte
+                    Deck.Removecard(selectedCard); // dies löscht eine Karte damit diese
+                                                   // auch nicht ans speichern weitergegeben wird.
+                                                   // Diese ist somit nicht mehr in der Liste vorhanden.
                     Flashcard_list.Items.Remove(selectedCard);
+
+                    Deck.Speichern("./decks");
 
                     Log.Information($"The {selectedCard} card was removed ...");
                 }

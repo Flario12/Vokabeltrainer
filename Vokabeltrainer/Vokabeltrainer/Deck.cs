@@ -26,7 +26,7 @@ namespace Vokabeltrainer
 
         public void Removecard(Flashcard flashcard)
         {
-            Flashcards.Remove(flashcard); 
+            Flashcards.Remove(flashcard); // Dies löscht eine Karte
         }
 
         public int Count()
@@ -61,13 +61,10 @@ namespace Vokabeltrainer
 
         public void Löschen(string folder)
         {
-            string filePath = Path.Combine(folder, Name + "txt");
-            using (StreamWriter sw = new StreamWriter(filePath))
+            string filePath = Path.Combine(folder, Name + ".txt");
+            if (File.Exists(filePath))
             {
-                foreach (Flashcard card in Flashcards)
-                {
-                    
-                }
+                File.Delete(filePath);
             }
         }
 
