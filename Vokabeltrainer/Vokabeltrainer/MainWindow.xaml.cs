@@ -28,12 +28,12 @@ namespace Vokabeltrainer
             // und in die ListView eingefügt
             InitializeComponent();
 
-            MessageBox.Show(
-                "Hallo, Willkommen zu meinem Vokabeltrainer-Projekt",
-                "Willkommen",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information
-            );
+            //MessageBox.Show(
+            //    "Hallo, Willkommen zu meinem Vokabeltrainer-Projekt",
+            //    "Willkommen",
+            //    MessageBoxButton.OK,
+            //    MessageBoxImage.Information
+            //);
 
             // Logger konfigurieren
             // MinimumLevel gibt an ab welchem Log-Level

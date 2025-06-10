@@ -28,7 +28,23 @@
             </StackPanel>
         </DockPanel>
         <WrapPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
-            <ListView x:Name="ListViewDecks" Background="AliceBlue" DisplayMemberPath="Name"/> 
+            <ListView x:Name="ListViewDecks"
+          Background="AliceBlue"
+          Margin="10"
+          Padding="10"
+          ItemsSource="{Binding DeineDeckListe}">
+                <!-- falls du Binding verwendest -->
+                <ListView.ItemContainerStyle> <!--Dies fügt den Abstand hinzu-->
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Margin" Value="0,0,0,10"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate> <!--Dies dient für den Inhalt einer ListView-->
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" FontSize="16"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
             <!--DisplaymemberPath=Name  gibt den Namen eines Decks an-->
         </WrapPanel>
     </Grid>
