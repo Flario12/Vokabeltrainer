@@ -36,12 +36,12 @@
                 <!-- falls du Binding verwendest -->
                 <ListView.ItemContainerStyle> <!--Dies fügt den Abstand hinzu-->
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Margin" Value="0,0,0,5"/>
+                        <Setter Property="Margin" Value="0,0,0,10"/>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate> <!--Dies dient für den Inhalt einer ListView-->
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" FontSize="12"/>
+                        <TextBlock Text="{Binding Name}" FontSize="16"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

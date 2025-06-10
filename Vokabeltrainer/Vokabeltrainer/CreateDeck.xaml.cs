@@ -20,9 +20,8 @@ namespace Vokabeltrainer
     /// </summary>
     public partial class CreateDeck : Window
     {
-        private string filename;
-
-        public Deck CreatedDeck { get; private set; } // Dies dient dazu um ein Deck zu erstellen und zu speichern.
+        public Deck CreatedDeck { get; private set; } // Dies dient dazu um ein
+                                                      // Deck zu erstellen und zu speichern.
 
         // public Deck Deck { get; set; } = null;
 
@@ -40,15 +39,25 @@ namespace Vokabeltrainer
 
             if (!string.IsNullOrWhiteSpace(deckName))
             {
-                CreatedDeck = new Deck(); // neues Deck wird initialisiert
-                CreatedDeck.Name = deckName;
-                this.DialogResult = true; // Das Mainwindow sollte immer noch aktiv sein
-                Log.Information("Create Window was closed ...");
-                this.Close();
+                if (IsNumber(deckName))
+                {
+                    MessageBox.Show("Bitte geben Sie keine Zahlen ein!");
+                    Log.Error("Input was a Number ... (Deck)");
+                }
+                else
+                {
+                    CreatedDeck = new Deck(); // neues Deck wird initialisiert
+                    CreatedDeck.Name = deckName;
+                    this.DialogResult = true; // Das Mainwindow sollte immer noch aktiv sein
+                    Log.Information("Create Window was closed ...");
+                    this.Close();
+                }
             }
+            
             else
             {
                 MessageBox.Show("Bitte gib einen gültigen Namen ein.");
+                Log.Error("Input was Empty or Null ...");
             }
         }
 
@@ -59,6 +68,18 @@ namespace Vokabeltrainer
             this.Close();
             window.ShowDialog();
             Log.Information("DeckWindow closed");
+        }
+
+        private bool IsNumber(string text)
+        {
+            foreach (char c in text)
+            {
+                if (char.IsDigit(c))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
