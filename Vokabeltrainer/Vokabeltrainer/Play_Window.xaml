@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vokabeltrainer"
         mc:Ignorable="d"
-        Title="Play_Window" Height="500" Width="800">
+        Title="Play_Window" Height="450" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>

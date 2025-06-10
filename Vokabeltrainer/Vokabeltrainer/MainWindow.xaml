@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Vokabeltrainer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="500" Width="850">
+        Title="MainWindow" Height="450" Width="850">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.30*"/>
@@ -31,17 +31,17 @@
             <ListView x:Name="ListViewDecks"
           Background="AliceBlue"
           Margin="10"
-          Padding="10"
+          Padding="5"
           ItemsSource="{Binding DeineDeckListe}">
                 <!-- falls du Binding verwendest -->
                 <ListView.ItemContainerStyle> <!--Dies fügt den Abstand hinzu-->
                     <Style TargetType="ListViewItem">
-                        <Setter Property="Margin" Value="0,0,0,10"/>
+                        <Setter Property="Margin" Value="0,0,0,5"/>
                     </Style>
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate> <!--Dies dient für den Inhalt einer ListView-->
                     <DataTemplate>
-                        <TextBlock Text="{Binding Name}" FontSize="16"/>
+                        <TextBlock Text="{Binding Name}" FontSize="12"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
