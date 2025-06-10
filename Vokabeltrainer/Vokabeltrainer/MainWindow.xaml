@@ -28,7 +28,8 @@
             </StackPanel>
         </DockPanel>
         <WrapPanel Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
-            <ListView x:Name="ListViewDecks" Background="AliceBlue"/>
+            <ListView x:Name="ListViewDecks" Background="AliceBlue" DisplayMemberPath="Name"/> 
+            <!--DisplaymemberPath=Name  gibt den Namen eines Decks an-->
         </WrapPanel>
     </Grid>
 </Window>
