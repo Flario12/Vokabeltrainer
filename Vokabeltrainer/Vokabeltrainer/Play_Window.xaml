@@ -31,5 +31,9 @@
         <TextBox x:Name="BackCard_Text" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Margin="10" FontSize="20"/>
         <Button x:Name="ExitBtn" Content="Exit" Click="ExitBtn_Click" FontSize="20"/>
         <Button x:Name="SubmitBtn" Content="Submit" Grid.Column="3" FontSize="20" Click="SubmitBtn_Click_1"/>
+        <Label x:Name="PointsLabel" Content="Points: "
+               Background="LightCyan" Grid.Row="4"
+               HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+               FontSize="30"/>
     </Grid>
 </Window>

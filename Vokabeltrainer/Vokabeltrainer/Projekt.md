@@ -52,6 +52,7 @@
     |**11.06**|Fertigstellung der Präsentation||
 
 !!! Example Lastenheft
+
     |Must-Haves|
     |---|
     |Erstellen einer Karteikarte|
@@ -74,15 +75,39 @@
     |Verschiedene Fächer|Mathematik, Physik, Chemie etc.|
 
 !!! Example Pflichtenheft
-    Hier einfügen
+
+    Technologie: Logging
+
+    Probleme: Laden und Speicher Struktur ändern. + Deckmanager ruft die Deck-Speicher Methode auf etc.
+    Abspielen von den Karten + Lösung: Index merken.
+
+    Die Architektur ist so aufgebaut, dass die Deckmanager Speichermethode die Deck-Speichermethode beinhaltet.
+    Für die Speicherung von Flashcards und laden von Flashcards benötigt man die Deck Klasse.
+    Die DeckManager Klasse ladet aber nur das Deck (inkl. Inhalt).
+    Zuvor wird nach dem schließen des Vokabellistenwindows die Karten ins Deck gespeichert.
+
+    Getestet wurde diese Software im Visual Studio 2022.
 
 !!! Quote Anleitung
-    Hier einfügen
+
+    Man fügt per Add ein Deck hinzu.
+    Wenn man eine Karte ausgewählt hat und man dann auf Edit drückt kommt man zum editieren.
+    Wenn man im Edit_Window ist kann man durch Add neue Karten einfügen.
+    Nach der Eingabe der Vorder- und Hinterseite kann man dies submitten.
+    Wenn Karteikarten im Window bzw. im Deck enthalten sind kann man 
+    diese abspielen - also sich testen.
+    Falls man aus dem Deck herausgehen möchte wird der gesamte Inhalt gespeichert
+    aber nicht der Inhalt, welcher durch delete gelöscht wird._
 
 !!! Danger Bugs
-    Hier Einfügen
 
-!!! Tip Erweiterungsmöglichkeiten
-    Hier einfügen
+    Es gibt offenbar noch keine.
+
+!!! Tip Erweiterungsmöglichkeiten 
+
+    Für andere Fächer
+    verschiedene Modis
+    Bilder
+    Sounds, Musik
 
 [TOC]

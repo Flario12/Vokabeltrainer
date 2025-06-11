@@ -29,7 +29,6 @@ namespace Vokabeltrainer
         {
             InitializeComponent();
             Log.Information("CreateWindow was opened ...");
-
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
