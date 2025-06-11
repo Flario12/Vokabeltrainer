@@ -102,7 +102,6 @@ namespace Vokabeltrainer
             if (cardIndex >= Deck.Flashcards.Count - 1)
             {
                 Vokabel_list_window vok = new Vokabel_list_window(Deck);
-                Speichern(folder);
                 this.Close();
                 vok.ShowDialog();
             }
@@ -112,14 +111,14 @@ namespace Vokabeltrainer
                 ShowCardText();
             }
 
-            void Speichern(string folder)
-            {
-                string filePath = System.IO.Path.Combine(folder + ".txt");
-                using (StreamWriter sw = new StreamWriter(filePath, true))
-                {
-                    sw.WriteLine(points.ToString());
-                }
-            }
+            //void Speichern(string folder)
+            //{
+            //    string filePath = System.IO.Path.Combine(folder + ".txt");
+            //    using (StreamWriter sw = new StreamWriter(filePath, true))
+            //    {
+            //        sw.WriteLine(points.ToString());
+            //    }
+            //}
 
         // TODO Falls nicht letzte Karte, neuen Text anzeigen
     }
