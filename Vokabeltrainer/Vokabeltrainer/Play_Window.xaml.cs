@@ -34,22 +34,38 @@ namespace Vokabeltrainer
             InitializeComponent();
             Log.Information("Play was started ...");
 
+            
             Deck = deck;
+            string filePath = "./points.txt";
+            if (File.Exists(filePath))
+            {
+                string[] lines = File.ReadAllLines(filePath); 
+                // TODO: Points laden indem man zuerst prüft ob lines enthalten
+                // sind und man sollte diese zu int konvertieren
+                if (lines.Length > 0 && int.TryParse(lines[1], out int loadedPoints)) // hier wird durch den out
+                                                                                      // das loadedPoints erstellt
+                {
+                    points = loadedPoints;
+                    PointsLabel.Content = $"Points: {points}";
+                }
+                else
+                {
+                    PointsLabel.Content = "Points: 0";
+                }
+            }
+            else
+            {
+                PointsLabel.Content = "Points: 0";
+            }
+
             ShowCardText();
-
-            //foreach (Flashcard card in deck.Flashcards)
-            //{
-
-            //    string answer = FrontCard_Text.Text;
-            //    Answer = answer;
-            //}
         }
 
         private void ShowCardText()
         {
             Flashcard card = Deck.Flashcards[cardIndex];
             // TODO: Kartentext anzeigen
-            FrontCard_Text.Text = card.FrontText;
+            FrontCard_Text.Content = card.FrontText;
         }
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
@@ -101,6 +117,7 @@ namespace Vokabeltrainer
                     sw.WriteLine(points.ToString());
                 }
             }
+
         // TODO Falls nicht letzte Karte, neuen Text anzeigen
     }
     }
