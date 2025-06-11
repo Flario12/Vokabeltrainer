@@ -42,8 +42,11 @@ namespace Vokabeltrainer
                 string[] lines = File.ReadAllLines(filePath); 
                 // TODO: Points laden indem man zuerst prüft ob lines enthalten
                 // sind und man sollte diese zu int konvertieren
-                if (lines.Length > 0 && int.TryParse(lines[1], out int loadedPoints)) // hier wird durch den out
-                                                                                      // das loadedPoints erstellt
+                // 
+                if (lines.Length > 0 && int.TryParse(lines[^1], out int loadedPoints)) // hier wird durch den out
+                                                                                     // das loadedPoints erstellt
+                                                                                     // ^1 weist auf das letzte Element des
+                                                                                      // Arrays
                 {
                     points = loadedPoints;
                     PointsLabel.Content = $"Points: {points}";
