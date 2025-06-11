@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using Serilog;
 
 namespace Vokabeltrainer
 {

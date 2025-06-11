@@ -130,10 +130,12 @@ namespace Vokabeltrainer
                     {
                         File.Delete(dateipfad);
                         Console.WriteLine("Datei wurde gelöscht.");
+                        Log.Information($"File got deleted {dateipfad} ... ");
                     }
                     else
                     {
                         Console.WriteLine("Datei existiert nicht.");
+                        Log.Error($"The chosen File does not exist {dateipfad} ... ");
                     }
 
                     Log.Information($"The {selectedDeck.Name} Deck was removed ...");
@@ -141,6 +143,7 @@ namespace Vokabeltrainer
                 else
                 {
                     MessageBox.Show("Bitte eine Liste auswählen");
+                    Log.Information("No List was chosen ...");
                 }
             }            
         }
@@ -162,7 +165,7 @@ namespace Vokabeltrainer
                     ListViewDecks.Items.Add(newDeck); // UI aktualisieren
                     deckManager.Speichern(); // Speichern
 
-                    Log.Information($"Neues Deck erstellt und gespeichert: {newDeck.Name}");
+                    Log.Information($"new deck got created and saved: {newDeck.Name}");
                 }
             }
         }

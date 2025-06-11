@@ -17,9 +17,10 @@ namespace Vokabeltrainer
 
         public Vokabel_list_window(Deck deck)
         {
+            
             // Der Inhalt der .txt File wird in die ListView eingefügt
             InitializeComponent();
-
+            Log.Information("The List was opened");
             Deck = deck;
 
             UpdateListView();
@@ -39,6 +40,7 @@ namespace Vokabeltrainer
         {
             // es werden die Vokabellisten geöffnet
             Vokabel_list_window vok = new Vokabel_list_window(Deck);
+            Log.Information("Edit got clicked ...");
             this.Close();
             vok.ShowDialog();
         }
@@ -57,6 +59,7 @@ namespace Vokabeltrainer
         {
             // TODO: Deck gleich strukturieren
             Deck.Speichern($"./decks");
+            Log.Information("The list was closed ...");
             MainWindow main = new MainWindow();
             this.Close();
             main.ShowDialog();
@@ -73,6 +76,7 @@ namespace Vokabeltrainer
             }
             else
             {
+                Log.Information("There are no cards to play ... ");
                 MessageBox.Show("Fügen Sie noch eine Karte hinzu!");
             }
         }

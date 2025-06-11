@@ -66,7 +66,7 @@ namespace Vokabeltrainer
             MainWindow window = new MainWindow();
             this.Close();
             window.ShowDialog();
-            Log.Information("DeckWindow closed");
+            Log.Information("DeckWindow got closed");
         }
 
         private bool IsNumber(string text)

@@ -42,7 +42,7 @@ namespace Vokabeltrainer
                 string[] lines = File.ReadAllLines(filePath); 
                 // TODO: Points laden indem man zuerst prüft ob lines enthalten
                 // sind und man sollte diese zu int konvertieren
-                // 
+                
                 if (lines.Length > 0 && int.TryParse(lines[^1], out int loadedPoints)) // hier wird durch den out
                                                                                      // das loadedPoints erstellt
                                                                                      // ^1 weist auf das letzte Element des
@@ -74,6 +74,7 @@ namespace Vokabeltrainer
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
             Vokabel_list_window vok = new Vokabel_list_window(Deck);
+            Log.Information("PlayWindow got closed ... ");
             this.Close();
             vok.ShowDialog();
         }
@@ -92,35 +93,29 @@ namespace Vokabeltrainer
                 // richtig
                 points += 1;
                 PointsLabel.Content = $"Points: {points}";
+                Log.Information($"Answer was right. Points: {points} ... ");
             }
             else
             {
                 MessageBox.Show("Falsch");
+                Log.Information($"Answer was wront. Points: {points} ... ");
             }
 
             // TODO Index erhöhen und prüfen ob es die letzte Karte war
             if (cardIndex >= Deck.Flashcards.Count - 1)
             {
                 Vokabel_list_window vok = new Vokabel_list_window(Deck);
+                Log.Information($"{cardIndex}: {answer}");
+                Log.Information("Play_Window got closed by finished Play ... ");
                 this.Close();
                 vok.ShowDialog();
             }
             else
             {
+                // TODO Falls nicht letzte Karte, neuen Text anzeigen
                 cardIndex++;
                 ShowCardText();
             }
-
-            //void Speichern(string folder)
-            //{
-            //    string filePath = System.IO.Path.Combine(folder + ".txt");
-            //    using (StreamWriter sw = new StreamWriter(filePath, true))
-            //    {
-            //        sw.WriteLine(points.ToString());
-            //    }
-            //}
-
-        // TODO Falls nicht letzte Karte, neuen Text anzeigen
-    }
+        }
     }
 }

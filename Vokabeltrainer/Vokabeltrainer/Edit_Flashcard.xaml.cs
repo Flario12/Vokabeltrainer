@@ -27,11 +27,14 @@ namespace Vokabeltrainer
 
         public Edit_Flashcard()
         {
+            Log.Information("The Edit Window got opened ... ");
             InitializeComponent();
         }
 
         public Edit_Flashcard(Flashcard flashcard)
         {
+            Log.Information($"The Edit Window got opened with a " +
+                $"transmitted flashcard {flashcard} ... ");
             InitializeComponent();
 
             Flashcard = flashcard;
@@ -41,6 +44,7 @@ namespace Vokabeltrainer
 
         private void ExitBtn_Click(object sender, RoutedEventArgs e)
         {
+            Log.Information("The Edit Window got closed");
             this.Close();
         }
 
@@ -64,7 +68,7 @@ namespace Vokabeltrainer
                     Flashcard.FrontText = front_flashcard;
                     Flashcard.BackText = back_flashcard;
                     
-                    Log.Information($"frontside was submitted ... {front_flashcard}");
+                    Log.Information($"Card was submitted ... {front_flashcard} - {back_flashcard}");
 
                     DialogResult = true;
                     this.Close();
