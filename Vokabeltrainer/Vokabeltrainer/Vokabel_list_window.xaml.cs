@@ -65,9 +65,16 @@ namespace Vokabeltrainer
         private void PlayBtn_Click(object sender, RoutedEventArgs e)
         {
             // TODO: richtiges Deck wählen
-            Play_Window play = new Play_Window(Deck); // sonst new Deck()
-            this.Close();
-            play.ShowDialog();
+            if (Flashcard_list.Items.Count > 0)
+            {
+                Play_Window play = new Play_Window(Deck); // sonst new Deck()
+                this.Close();
+                play.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Fügen Sie noch eine Karte hinzu!");
+            }
         }
 
         private void DeleteBtn_Click(object sender, RoutedEventArgs e)

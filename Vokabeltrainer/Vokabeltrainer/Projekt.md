@@ -47,6 +47,9 @@
     |**06.06**|.vs wurde hinzugefügt, Vokabelliste und das Edit wurde verändert, Deckmanager, Deck, Flashcard ebenfalls|||
     |**07.06**|Improvisierung PlayWindow und die Vokabelliste|||
     |**08.06**|Funktionierung des PlayWindows||
+    |**09.06**|||
+    |**10.06**|Anfang der Erstellung der Präsentation||
+    |**11.06**|Fertigstellung der Präsentation||
 
 !!! Example Lastenheft
     |Must-Haves|
