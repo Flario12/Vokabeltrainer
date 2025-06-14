@@ -117,7 +117,6 @@ namespace Vokabeltrainer
                 Log.Information("Play_Window got closed by finished Play ... ");
                 Thread.Sleep(500);
                 this.Close();
-                vok.ShowDialog();
             }
             else
             {

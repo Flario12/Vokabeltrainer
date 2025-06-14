@@ -50,6 +50,7 @@
     |**09.06**|||
     |**10.06**|Anfang der Erstellung der Präsentation||
     |**11.06**|Fertigstellung der Präsentation||
+    |**14.06**|Optimierung der App - Entfernung von unnötigen Buttons, Implementierung vom X im PlayWindow|||
 
 !!! Example Lastenheft
 
@@ -76,9 +77,9 @@
 
 !!! Example Pflichtenheft
 
-    Technologie: Logging
+    Technologie: Logging, GIT, Visual Studio 2022
 
-    Probleme: Laden und Speicher Struktur ändern. + Deckmanager ruft die Deck-Speicher Methode auf etc.
+    Probleme: Laden und Speicher Struktur ändern. + Lösung: Deckmanager ruft die Deck-Speicher Methode auf und Das Deck speichert die Flashcards ab.
     Abspielen von den Karten + Lösung: Index merken.
 
     Die Architektur ist so aufgebaut, dass die Deckmanager Speichermethode die Deck-Speichermethode beinhaltet.
@@ -101,7 +102,7 @@
 
 !!! Danger Bugs
 
-    Es gibt offenbar noch keine.
+    Es gibt offenbar noch keine. V1.0
 
 !!! Tip Erweiterungsmöglichkeiten 
 
