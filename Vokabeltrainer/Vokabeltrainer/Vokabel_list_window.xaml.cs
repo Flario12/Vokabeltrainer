@@ -24,6 +24,21 @@ namespace Vokabeltrainer
             Deck = deck;
 
             UpdateListView();
+
+            
+            this.Closing += Vokabel_list_window_Closing;
+            this.Closed += Vokabel_list_window_Closed;
+        }
+
+        private void Vokabel_list_window_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Deck.Speichern($"./decks");
+            Log.Information("The list was closed via X ...");
+        }
+
+        private void Vokabel_list_window_Closed(object? sender, System.EventArgs e)
+        {
+            this.Close();
         }
 
         private void UpdateListView()
@@ -34,15 +49,6 @@ namespace Vokabeltrainer
             {
                 Flashcard_list.Items.Add(card);
             }
-        }
-
-        private void EditBtn_Click(object sender, RoutedEventArgs e)
-        {
-            // es werden die Vokabellisten geöffnet
-            Vokabel_list_window vok = new Vokabel_list_window(Deck);
-            Log.Information("Edit got clicked ...");
-            this.Close();
-            vok.ShowDialog();
         }
 
         private void AddBtn_Click(object sender, RoutedEventArgs e)

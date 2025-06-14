@@ -78,11 +78,6 @@ namespace Vokabeltrainer
             Log.Information("Application closed ...");
         }
 
-        private void SelectBtn_Click(object sender, RoutedEventArgs e)
-        {
-            // Wählt eine Karteikarte aus
-            Log.Debug("FLashcard was selected ...");
-        }
 
         private void EditBtn_Click(object sender, RoutedEventArgs e)
         {

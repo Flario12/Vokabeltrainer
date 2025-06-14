@@ -20,7 +20,6 @@
         <DockPanel x:Name="DockPanel" Grid.Column="0" Grid.RowSpan="2" Background="LightGray" >
             <StackPanel>
                 <Label x:Name="TitleLabel" Content="Vokabeltrainer" Width="140" Background="Gray" FontSize="20" Margin="5"/>
-                <Button x:Name="SelectBtn" Content="Select" Height="30" Margin="10" FontSize="15" Click="SelectBtn_Click"/>
                 <Button x:Name="EditBtn" Content="Edit" Height="30" Margin="10" FontSize="15" Click="EditBtn_Click"/>
                 <Button x:Name="DeleteBtn" Content="Delete" Height="30" Margin="10" FontSize="15" Click="DeleteBtn_Click"/>
                 <Button x:Name="CreateBtn" Content="Create" Height="30" Margin="10" FontSize="15" Click="CreateBtn_Click"/>

@@ -65,7 +65,6 @@ namespace Vokabeltrainer
         {
             MainWindow window = new MainWindow();
             this.Close();
-            window.ShowDialog();
             Log.Information("DeckWindow got closed");
         }
 

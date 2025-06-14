@@ -62,7 +62,16 @@ namespace Vokabeltrainer
             }
 
             ShowCardText();
+
+            this.Closing += Play_Window_Closing; 
         }
+
+        private void Play_Window_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Vokabel_list_window vok = new Vokabel_list_window(Deck);
+            vok.Show();
+        }
+
 
         private void ShowCardText()
         {
@@ -76,7 +85,6 @@ namespace Vokabeltrainer
             Vokabel_list_window vok = new Vokabel_list_window(Deck);
             Log.Information("PlayWindow got closed ... ");
             this.Close();
-            vok.ShowDialog();
         }
 
 
@@ -107,6 +115,7 @@ namespace Vokabeltrainer
                 Vokabel_list_window vok = new Vokabel_list_window(Deck);
                 Log.Information($"{cardIndex}: {answer}");
                 Log.Information("Play_Window got closed by finished Play ... ");
+                Thread.Sleep(500);
                 this.Close();
                 vok.ShowDialog();
             }
