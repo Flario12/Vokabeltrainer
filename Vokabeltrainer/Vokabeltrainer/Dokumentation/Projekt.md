@@ -47,10 +47,17 @@
     |**06.06**|.vs wurde hinzugefügt, Vokabelliste und das Edit wurde verändert, Deckmanager, Deck, Flashcard ebenfalls|||
     |**07.06**|Improvisierung PlayWindow und die Vokabelliste|||
     |**08.06**|Funktionierung des PlayWindows||
-    |**09.06**|||
-    |**10.06**|Anfang der Erstellung der Präsentation||
-    |**11.06**|Fertigstellung der Präsentation||
+    |**09.06**|Erstellung CreateDeck, Löschung von Files, Prävention versehentlichem Löschen.||
+    |**10.06**|Decknamen als Anzeige, Abstand zwischen den ListViewItems, kleine Design Änderungen,
+    Fehlerbehandlung im CreateDeck (Eingabe),
+    Hier wurde das Aussehen der Vokabelliste verbessert,
+    Hier wurde das Löschen von Files gefixt (Diese existierten immer noch).||
+    |**11.06**|Hier wurde das Punktesystem eingefügt und gefixt, Frage wurde zum
+    Label, beim Laden wird das letzte Element genommen. In allen Windows wurde das Logging 
+    angepasst. Allerdings wurde das Speichern der Punkte entfernt.|||
     |**14.06**|Optimierung der App - Entfernung von unnötigen Buttons, Implementierung vom X im PlayWindow|||
+
+
 
 !!! Example Lastenheft
 
@@ -102,7 +109,7 @@
 
 !!! Danger Bugs
 
-    Es gibt offenbar noch keine. V1.0
+    Es gibt offenbar keine. V1.0.1
 
 !!! Tip Erweiterungsmöglichkeiten 
 
