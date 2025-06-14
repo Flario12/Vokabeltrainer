@@ -27,18 +27,12 @@ namespace Vokabeltrainer
 
             
             this.Closing += Vokabel_list_window_Closing;
-            this.Closed += Vokabel_list_window_Closed;
         }
 
         private void Vokabel_list_window_Closing(object? sender, System.ComponentModel.CancelEventArgs e)
         {
             Deck.Speichern($"./decks");
             Log.Information("The list was closed via X ...");
-        }
-
-        private void Vokabel_list_window_Closed(object? sender, System.EventArgs e)
-        {
-            this.Close();
         }
 
         private void UpdateListView()
