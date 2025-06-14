@@ -20,12 +20,13 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Vorderseite:" Width="200" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Frontside:" Width="200" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         
         <TextBox x:Name="input_frontcard" Background="LightGray" Grid.Row="0" Grid.Column="2" 
                  Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" TextWrapping="Wrap"/>
 
-        <Label Content="Rückseite:" Width="200" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" HorizontalContentAlignment="Center"/>
+        <Label Content="Backside:" Width="200" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"
+               HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
 
         <TextBox x:Name="input_backcard" Background="LightGray" Grid.Row="1" Grid.Column="2" 
           Grid.ColumnSpan="2" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" TextWrapping="Wrap"/>

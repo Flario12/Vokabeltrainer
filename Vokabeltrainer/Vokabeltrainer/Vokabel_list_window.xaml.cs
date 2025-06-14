@@ -85,18 +85,20 @@ namespace Vokabeltrainer
         {
             Flashcard selectedCard = Flashcard_list.SelectedItem as Flashcard;
 
-            MessageBoxResult result = MessageBox.Show(
+            
+            
+            if (selectedCard != null)
+            {
+                MessageBoxResult result = MessageBox.Show(
                 "Möchten Sie diese Karte wirklich löschen?",
                 "Karte löschen",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning,
                 MessageBoxResult.No
-            );
+                );
 
-            if (result == MessageBoxResult.Yes)
-            {
                 // Löschen durchführen
-                if (selectedCard != null)
+                if (result == MessageBoxResult.Yes)
                 {
                     // Bearbeitet eine Karteikarte
                     Deck.Removecard(selectedCard); // dies löscht eine Karte damit diese
@@ -108,10 +110,10 @@ namespace Vokabeltrainer
 
                     Log.Information($"The {selectedCard} card was removed ...");
                 }
-                else
-                {
-                    MessageBox.Show("please choose a card");
-                }
+            }
+            else
+            {
+                MessageBox.Show("please choose a card");
             }
         }
     }

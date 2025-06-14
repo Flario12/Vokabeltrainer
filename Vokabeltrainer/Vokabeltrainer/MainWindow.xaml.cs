@@ -103,18 +103,20 @@ namespace Vokabeltrainer
         {
             Deck selectedDeck = ListViewDecks.SelectedItem as Deck;
 
-            MessageBoxResult result = MessageBox.Show(
+            
+
+            if (selectedDeck != null)
+            {
+                MessageBoxResult result = MessageBox.Show(
                 "Möchten Sie das Deck wirklich löschen?",
                 "Deck löschen",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Warning,
                 MessageBoxResult.No
-            );
+                );
 
-            if (result == MessageBoxResult.Yes)
-            {
                 // Löschen durchführen
-                if (selectedDeck != null)
+                if (result == MessageBoxResult.Yes)
                 {
                     // Bearbeitet eine Karteikarte
                     ListViewDecks.Items.Remove(selectedDeck);
@@ -135,12 +137,12 @@ namespace Vokabeltrainer
 
                     Log.Information($"The {selectedDeck.Name} Deck was removed ...");
                 }
-                else
-                {
-                    MessageBox.Show("Bitte eine Liste auswählen");
-                    Log.Information("No List was chosen ...");
-                }
-            }            
+            }
+            else
+            {
+                MessageBox.Show("Bitte eine Liste auswählen");
+                Log.Information("No List was chosen ...");
+            }
         }
 
         private void CreateBtn_Click(object sender, RoutedEventArgs e)
