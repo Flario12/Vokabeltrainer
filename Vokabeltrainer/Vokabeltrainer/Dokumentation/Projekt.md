@@ -55,7 +55,9 @@
     |**11.06**|Hier wurde das Punktesystem eingefügt und gefixt, Frage wurde zum
     Label, beim Laden wird das letzte Element genommen. In allen Windows wurde das Logging 
     angepasst. Allerdings wurde das Speichern der Punkte entfernt.|||
-    |**14.06**|Optimierung der App - Entfernung von unnötigen Buttons, Implementierung vom X im PlayWindow|||
+    |**14.06**|Optimierung der App - Entfernung von unnötigen Buttons,
+    Implementierung vom X im PlayWindow. Hier wurde das Löschen noch so angepasst, dass man eine Liste 
+    auswählen muss + das Visuelle vom EditWindow wurde angepasst - Zentrierung|||
 
 
 
