@@ -100,18 +100,22 @@
 
 !!! Quote Anleitung
 
+    ![Alternativtext](./Menü.png)
     Man fügt per Add ein Deck hinzu.
-    Wenn man eine Karte ausgewählt hat und man dann auf Edit drückt kommt man zum editieren.
+    Wenn man eine Karte ausgewählt hat und man dann auf Edit drückt kommt man zum editieren. Man muss aber hierfür ein Deck auswählen - dies zählt aber auch für das Löschen eines Decks.
+    ![Alternativtext](./Vokabelliste.png)
     Wenn man im Edit_Window ist kann man durch Add neue Karten einfügen.
+    ![Alternativtext](./Add_Flashcard.png)
     Nach der Eingabe der Vorder- und Hinterseite kann man dies submitten.
     Wenn Karteikarten im Window bzw. im Deck enthalten sind kann man 
     diese abspielen - also sich testen.
+    ![Alternativtext](./PlayWindow.png)
     Falls man aus dem Deck herausgehen möchte wird der gesamte Inhalt gespeichert
-    aber nicht der Inhalt, welcher durch delete gelöscht wird._
+    aber nicht der Inhalt, welcher durch delete gelöscht wird. (Für das Löschen muss man aber eine Karte auswählen)    
 
 !!! Danger Bugs
 
-    Es gibt offenbar keine. V1.0.1
+    Es gibt offenbar keine. V1.0.0
 
 !!! Tip Erweiterungsmöglichkeiten 
 
